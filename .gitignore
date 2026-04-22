@@ -1,0 +1,8 @@
+.env
+node_modules/
+/src/generated/prisma
+
+# experiments
+.git1
+/src/modules/user/
+/src/tests/
