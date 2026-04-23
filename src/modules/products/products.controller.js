@@ -37,7 +37,7 @@ export const getProducts = async (req, res) => {
     if (error) {
       return errorResponse(res, error.details[0].message, null, 422);
     }
-    const role = req.user.role;
+    const role = req.user?.role || "user";
     const { page, limit, search, sortBy, order } = value;
     const products = await service.getProducts({
       page,
@@ -89,6 +89,7 @@ export const updateProduct = async (req, res) => {
 
     const { name, price, description } = value;
     const imgs = req.files;
+    console.log("imgs in controller:", imgs);
     const updatedProduct = await service.updateProduct(
       id,
       {

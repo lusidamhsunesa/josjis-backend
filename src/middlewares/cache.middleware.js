@@ -3,11 +3,12 @@ import logger from "../config/logger.config.js";
 
 export async function cacheMiddleware(req, res, next) {
   try {
-    const key = `cache:${req.originalUrl}`;
+    const role = req.user?.role || "user";
+    const key = `cache:${role}:${req.originalUrl}`;
 
     const cached = await cache.get(key);
     if (cached) {
-      logger.info(`Cache hit for ${req.originalUrl}`);
+      logger.info(`Cache hit for ${role}:${req.originalUrl}`);
       return res.json({
         source: "cache",
         ...cached,

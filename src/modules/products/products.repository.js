@@ -1,11 +1,18 @@
 import db from "../../config/db.config.js";
 
-export const createProduct = async (name, price, description, imgKeys) => {
+export const createProduct = async (
+  name,
+  price,
+  description,
+  category,
+  imgKeys,
+) => {
   const product = await db.products.create({
     data: {
       name,
       price,
       description,
+      category,
       img_keys: imgKeys,
     },
   });

@@ -21,6 +21,7 @@ const ensureAdminUser = async () => {
   if (!existingAdmin) {
     await db.users.create({
       data: {
+        name: adminCredentials.name,
         email: adminCredentials.email,
         password: await bcrypt.hash(adminCredentials.password, 10),
         role: "admin",

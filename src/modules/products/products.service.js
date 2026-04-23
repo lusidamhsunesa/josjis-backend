@@ -3,10 +3,17 @@ import { cache } from "../../utils/cache.js";
 import { uploadFileToS3, deleteFileFromS3 } from "../../utils/s3.js";
 
 const invalidateProductsCache = async (id = null) => {
-  await cache.del("cache:/api/products*"); // Hapus semua data di memory
+  await cache.del("cache:admin:/api/products*");
+  await cache.del("cache:user:/api/products*");
 };
 
-export const createProduct = async (name, price, description, imgs) => {
+export const createProduct = async (
+  name,
+  price,
+  description,
+  category,
+  imgs,
+) => {
   invalidateProductsCache();
   const uploaded = await Promise.all(imgs.map((img) => uploadFileToS3(img)));
   const imgKeys = uploaded.map((item) => item.key);
@@ -14,6 +21,7 @@ export const createProduct = async (name, price, description, imgs) => {
     name,
     price,
     description,
+    category,
     imgKeys,
   );
   return product;
@@ -46,10 +54,13 @@ export const updateProduct = async (id, data, imgs) => {
   const existingProduct = await repository.getProductById(id);
 
   // delete old images
-  if (existingProduct.img_keys?.length) {
-    await Promise.all(
-      existingProduct.img_keys.map((key) => deleteFileFromS3(key)),
-    );
+  if (imgs && imgs.length > 0) {
+    // delete gambar lama
+    if (existingProduct.img_keys?.length) {
+      await Promise.all(
+        existingProduct.img_keys.map((key) => deleteFileFromS3(key)),
+      );
+    }
   }
 
   // upload new images (safe)
