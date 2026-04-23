@@ -13,6 +13,7 @@ export const createOrderWithItems = async (tx, data) => {
           qty: item.qty,
           price: item.price,
           subtotal: item.subtotal,
+          notes: item.notes,
         })),
       },
     },
@@ -65,6 +66,9 @@ export const getOrders = async ({
 
   const orders = await db.orders.findMany({
     where: whereCondition,
+    include: {
+      order_items: true,
+    },
     orderBy: {
       [sortBy]: order,
     },
@@ -113,7 +117,8 @@ export const updateOrderStatus = async (id, status) => {
 };
 
 export const deleteOrder = async (id) => {
-  return await db.orders.delete({
+  return await db.orders.update({
     where: { id },
+    data: { is_deleted: true },
   });
 };

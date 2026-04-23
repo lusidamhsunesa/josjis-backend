@@ -8,6 +8,10 @@ export const createOrderSchema = Joi.object({
       Joi.object({
         productId: Joi.string().uuid().required(),
         quantity: Joi.number().integer().min(1).required(),
+        notes: Joi.string().max(255).default("").messages({
+          "string.base": "Notes must be a string",
+          "string.max": "Notes must be less than 255 characters long",
+        }),
       }),
     )
     .min(1)
