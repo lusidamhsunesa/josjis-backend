@@ -1,13 +1,5 @@
 import * as repository from "./order.repository.js";
 import db from "../../config/db.config.js";
-// export const createOrder = async (userId, data) => {
-//   if (!data.items || data.items.length === 0) {
-//     throw new Error("Items is required");
-//   }
-//   const order = await repository.createOrder(userId, data);
-//   await repository.createOrderItems(order.id, data.items);
-//   return order;
-// };
 
 export const createOrder = async (tableId, data) => {
   if (!data.items || data.items.length === 0) {
@@ -59,4 +51,34 @@ export const createOrder = async (tableId, data) => {
 
     return order;
   });
+};
+
+export const getOrders = async (query) => {
+  const params = {
+    page: Number(query.page),
+    limit: Number(query.limit),
+    search: query.search,
+    sortBy: query.sortBy,
+    order: query.order,
+    role: query.role,
+  };
+
+  const orders = await repository.getOrders(params);
+
+  return orders;
+};
+
+export const getOrderById = async (id) => {
+  const order = await repository.getOrderById(id);
+  return order;
+};
+
+export const updateOrderStatus = async (id, status) => {
+  const updatedOrder = await repository.updateOrderStatus(id, status);
+  return updatedOrder;
+};
+
+export const deleteOrder = async (id) => {
+  const order = await repository.deleteOrder(id);
+  return order;
 };

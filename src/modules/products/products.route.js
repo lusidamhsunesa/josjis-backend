@@ -4,6 +4,7 @@ import { handleUploadError } from "../../middlewares/handleUpdloadError.js";
 import upload from "../../middlewares/upload.middleware.js";
 import { authMiddleware } from "../../middlewares/auth.middleware.js";
 import { authorizeRoles } from "../../middlewares/authRole.middleware.js";
+import { cacheMiddleware } from "../../middlewares/cache.middleware.js";
 
 const router = Router();
 
@@ -13,8 +14,8 @@ router.post(
   controller.createProduct,
 );
 
-router.get("/", authMiddleware, controller.getProducts);
-router.get("/:id", authMiddleware, controller.getProductById);
+router.get("/", authMiddleware, cacheMiddleware, controller.getProducts);
+router.get("/:id", authMiddleware, cacheMiddleware, controller.getProductById);
 router.put(
   "/:id",
   handleUploadError(upload.array("img", 5)),

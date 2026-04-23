@@ -2,7 +2,12 @@ import * as repository from "./products.repository.js";
 import { cache } from "../../utils/cache.js";
 import { uploadFileToS3, deleteFileFromS3 } from "../../utils/s3.js";
 
+const invalidateProductsCache = async (id = null) => {
+  await cache.del("cache:/api/products*"); // Hapus semua data di memory
+};
+
 export const createProduct = async (name, price, description, imgs) => {
+  invalidateProductsCache();
   const uploaded = await Promise.all(imgs.map((img) => uploadFileToS3(img)));
   const imgKeys = uploaded.map((item) => item.key);
   const product = await repository.createProduct(
@@ -35,6 +40,7 @@ export const getProductById = async (id) => {
 };
 
 export const updateProduct = async (id, data, imgs) => {
+  invalidateProductsCache();
   let imgKeys = [];
 
   const existingProduct = await repository.getProductById(id);
@@ -64,6 +70,7 @@ export const updateProduct = async (id, data, imgs) => {
 };
 
 export const deleteProduct = async (id) => {
+  invalidateProductsCache();
   const product = await repository.deleteProduct(id);
   return product;
 };

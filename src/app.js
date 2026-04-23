@@ -1,5 +1,4 @@
 import express from "express";
-import userRoute from "./modules/user/user.route.js";
 import authRoute from "./modules/auth/auth.route.js";
 import productRoute from "./modules/products/products.route.js";
 import orderRoute from "./modules/order/order.route.js";
@@ -23,7 +22,6 @@ app.get("/", (req, res) => {
   res.send("API is Running!");
 });
 
-app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/products", productRoute);
 app.use("/api/orders", orderRoute);

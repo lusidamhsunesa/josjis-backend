@@ -5,9 +5,20 @@ import * as dto from "./products.dto.js";
 
 export const createProduct = async (req, res) => {
   try {
-    const { name, price, description } = req.body;
+    const { error, value } = validation.createProductSchema.validate(req.body);
+
+    if (error) {
+      return errorResponse(res, error.details[0].message, null, 422);
+    }
+    const { name, price, description, category } = value;
     const imgs = req.files;
-    const product = await service.createProduct(name, price, description, imgs);
+    const product = await service.createProduct(
+      name,
+      price,
+      description,
+      category,
+      imgs,
+    );
     return successResponse(
       res,
       "Product created successfully",
@@ -40,10 +51,11 @@ export const getProducts = async (req, res) => {
       res,
       "Products retrieved successfully",
       dto.productListDto(products),
+      200,
     );
   } catch (error) {
     console.error(error);
-    return errorResponse(res, "Failed to retrieve products");
+    return errorResponse(res, error, "Failed to retrieve products", null, 500);
   }
 };
 
@@ -58,31 +70,24 @@ export const getProductById = async (req, res) => {
       res,
       "Product retrieved successfully",
       dto.productDto(product),
+      200,
     );
   } catch (error) {
     console.error(error);
-    return errorResponse(res, "Failed to retrieve product");
-  }
-};
-
-export const deleteProduct = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedProduct = await service.deleteProduct(id);
-    if (!deletedProduct) {
-      return errorResponse(res, deletedProduct, "Product not found", null, 404);
-    }
-    return successResponse(res, "Product deleted successfully", deletedProduct);
-  } catch (error) {
-    console.error(error);
-    return errorResponse(res, "Failed to delete product");
+    return errorResponse(res, error, "Failed to retrieve product", null, 500);
   }
 };
 
 export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, price, description } = req.body;
+    const { error, value } = validation.updateProductSchema.validate(req.body);
+
+    if (error) {
+      return errorResponse(res, error.details[0].message, null, 422);
+    }
+
+    const { name, price, description } = value;
     const imgs = req.files;
     const updatedProduct = await service.updateProduct(
       id,
@@ -96,9 +101,33 @@ export const updateProduct = async (req, res) => {
     if (!updatedProduct) {
       return errorResponse(res, updatedProduct, "Product not found", null, 404);
     }
-    return successResponse(res, "Product updated successfully", updatedProduct);
+    return successResponse(
+      res,
+      "Product updated successfully",
+      updatedProduct,
+      200,
+    );
   } catch (error) {
     console.error(error);
-    return errorResponse(res, "Failed to update product");
+    return errorResponse(res, error, "Failed to update product", null, 500);
+  }
+};
+
+export const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedProduct = await service.deleteProduct(id);
+    if (!deletedProduct) {
+      return errorResponse(res, deletedProduct, "Product not found", null, 404);
+    }
+    return successResponse(
+      res,
+      "Product deleted successfully",
+      deletedProduct,
+      200,
+    );
+  } catch (error) {
+    console.error(error);
+    return errorResponse(res, error, "Failed to delete product", null, 500);
   }
 };
