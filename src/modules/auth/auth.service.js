@@ -9,7 +9,10 @@ export const getRefreshToken = async (refreshToken) => {
   if (!userRefreshToken) {
     throw new Error("Invalid or expired refresh token");
   }
-  const accessToken = generateAccessToken(userRefreshToken.user_id, "user");
+  const accessToken = generateAccessToken(
+    userRefreshToken.user_id,
+    userRefreshToken.role,
+  );
   return accessToken;
 };
 
