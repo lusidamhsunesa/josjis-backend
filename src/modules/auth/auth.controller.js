@@ -8,6 +8,7 @@ export const getRefreshToken = async (req, res) => {
   try {
     const refreshToken = req.cookies.refresh_token;
     const token = await service.getRefreshToken(refreshToken);
+    setCookies(res, "access_token", token, cookiesDuration.accessToken);
     return successResponse(res, "Refresh token retrieved successfully", {
       token: token,
     });
