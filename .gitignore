@@ -1,5 +1,10 @@
-node_modules/
 .env
-.env.local
-npm-debug.log
-.DS_Store
+node_modules/
+/src/generated/prisma
+/src/.DS_Store
+/src/modules/.DS_Store
+
+# experiments
+.git1
+/src/modules/user/
+/src/tests/
