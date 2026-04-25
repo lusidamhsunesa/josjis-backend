@@ -137,9 +137,44 @@ This project is intended as an experimental implementation using the Express.js 
 └── README.md
 ```
 
-### API Documentation
+### API Request Documentation
+
+#### Admin login
+
+POST /api/auth/admin/login
+
+```json
+{
+  "email": "admin@example.com",
+  "password": "admin_password_here"
+}
+```
 
 #### Admin endpoint (Protected)
+
+1. Get Admin 🔒 : GET /api/auth/admin/me
+
+   ```javascript
+   headers: {
+      'Cookie': 'access_token=your_access_token'
+   }
+   ```
+
+2. Get Admin Refresh Token : GET /api/auth/admin/refresh-token
+
+   ```javascript
+   headers: {
+      'Cookie': 'refresh_token=your_refresh_token'
+   }
+   ```
+
+3. LogOut Admin : POST /api/auth/admin/logout
+
+   ```javascript
+   headers: {
+      'Cookie': 'access_token=your_access_token'
+   }
+   ```
 
 #### User endpoint
 
