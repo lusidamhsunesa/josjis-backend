@@ -38,9 +38,9 @@ export const createMidtransTransaction = async (data) => {
 
     const transaction = await snap.createTransaction(parameter);
 
-    return { token: transaction.token };
+    return transaction;
   } catch (err) {
-    console.error("Midtrans token error:", err);
+    console.error("Midtrans token error:", err.message);
     throw new Error("Failed to create token");
   }
 };

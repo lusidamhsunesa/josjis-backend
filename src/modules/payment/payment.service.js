@@ -55,8 +55,24 @@ export const createPayment = async (orderId, data) => {
   throw new Error("Unsupported payment method");
 };
 
-export const getPaymentById = async (paymentId) => {
-  const payment = await repository.getPaymentById(paymentId);
+export const getAllPayments = async (query) => {
+  const params = {
+    page: Number(query.page),
+    limit: Number(query.limit),
+    sortBy: query.sortBy,
+    order: query.order,
+    role: query.role,
+    status: query.status,
+    method: query.method,
+  };
+
+  const payments = await repository.getPayments(params);
+
+  return payments;
+};
+
+export const getPaymentByOrderId = async (orderId) => {
+  const payment = await repository.getPaymentByOrderId(orderId);
 
   if (!payment) {
     throw new Error("Payment not found");

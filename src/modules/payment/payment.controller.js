@@ -1,9 +1,21 @@
 import * as service from "./payment.service.js";
+import * as validation from "./payment.validation.js";
 import { successResponse, errorResponse } from "../../utils/response.js";
+import { cache } from "../../utils/cache.js";
+
+const invalidatePaymentsCache = async () => {
+  await cache.del("cache:admin:/api/payments*");
+  await cache.del("cache:user:/api/payments*");
+};
 
 export const createPayment = async (req, res) => {
+  invalidatePaymentsCache();
   try {
-    const data = req.body;
+    const { error, value } = validation.createPaymentSchema.validate(req.body);
+    if (error) {
+      return errorResponse(res, error.details[0].message, null, 422);
+    }
+    const data = value;
     const orderId = data.orderId;
 
     const payment = await service.createPayment(orderId, data);
@@ -14,10 +26,24 @@ export const createPayment = async (req, res) => {
   }
 };
 
-export const getPaymentById = async (req, res) => {
+export const getAllPayments = async (req, res) => {
   try {
-    const paymentId = req.params.id;
-    const payment = await service.getPaymentById(paymentId);
+    const { error, value } = validation.paginationSchema.validate(req.query);
+    if (error) {
+      return errorResponse(res, error.details[0].message, null, 422);
+    }
+
+    const payments = await service.getAllPayments(value);
+    return successResponse(res, "Payments retrieved successfully", payments);
+  } catch (error) {
+    return errorResponse(res, error, "Failed to retrieve payments", null, 500);
+  }
+};
+
+export const getPaymentByOrderId = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    const payment = await service.getPaymentByOrderId(orderId);
 
     return successResponse(res, "Payment retrieved successfully", payment);
   } catch (error) {
@@ -26,6 +52,7 @@ export const getPaymentById = async (req, res) => {
 };
 
 export const updatePaymentStatus = async (req, res) => {
+  invalidatePaymentsCache();
   try {
     const paymentId = req.params.id;
     const { status } = req.body;
@@ -49,6 +76,7 @@ export const updatePaymentStatus = async (req, res) => {
 };
 
 export const deletePayment = async (req, res) => {
+  invalidatePaymentsCache();
   try {
     const paymentId = req.params.id;
 
