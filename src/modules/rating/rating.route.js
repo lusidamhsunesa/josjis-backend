@@ -5,8 +5,9 @@ import { Router } from "express";
 const router = Router();
 
 router.post("/", authMiddleware, controller.createRating);
-router.get("/my", authMiddleware, controller.getRatingsByUserId);
+router.get("/", authMiddleware, controller.getAllRatings);
+router.get("/order/:orderId", authMiddleware, controller.getRatingsByOrderId);
 router.put("/:ratingId", authMiddleware, controller.updateRating);
-router.delete("/:ratingId", authMiddleware, controller.deleteRating);
+// router.delete("/:ratingId", authMiddleware, controller.deleteRating);
 
 export default router;
