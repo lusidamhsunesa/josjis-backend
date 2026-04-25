@@ -8,9 +8,12 @@ import ratingRoute from "./modules/rating/rating.route.js";
 import limiter from "./middlewares/rate.limiter.js";
 import logger from "./middlewares/logger.js";
 import adminCredentials from "./config/admin.credential.js";
+import webhookRoute from "./modules/webhook/webhook.route.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
+
+app.set("trust proxy", true);
 
 app.use(limiter);
 app.use(express.json());
@@ -28,4 +31,5 @@ app.use("/api/orders", orderRoute);
 app.use("/api/payments", paymentRoute);
 app.use("/api/tables", tableRoute);
 app.use("/api/ratings", ratingRoute);
+app.use("/api/midtrans/webhooks", webhookRoute);
 export default app;
