@@ -4,7 +4,7 @@ import { successResponse, errorResponse } from "../../utils/response.js";
 export const handleWebhook = (req, res) => {
   const data = req.body;
 
-  console.log("Received webhook:", JSON.stringify(data, null, 2));
+  // console.log("Received webhook:", JSON.stringify(data, null, 2));
 
   try {
     service.webhookHandler(data);
