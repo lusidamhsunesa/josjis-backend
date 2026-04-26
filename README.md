@@ -227,4 +227,4 @@ POST /api/auth/admin/login
 
 - Live API : [live here](https://josjis-fnb.rafn.tech)
 
-- POSTMAN Documentation : [click here](https://documenter.getpostman.com/view/46893771/2sBXikori4)
+- POSTMAN Documentation : [click here](https://documenter.getpostman.com/view/46893771/2sBXqGr1vT)
