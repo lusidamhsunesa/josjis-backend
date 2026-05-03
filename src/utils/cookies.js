@@ -6,3 +6,11 @@ export const setCookies = (res, cookiesName, cookiesValue, exp) => {
     maxAge: 60 * 60 * 1000 * exp,
   });
 };
+
+export const deleteCookies = (res, cookiesName) => {
+  res.clearCookie(cookiesName, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+};

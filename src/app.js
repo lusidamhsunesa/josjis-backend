@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.set("trust proxy", true);
+app.set("trust proxy", 1);
 
 app.use(limiter);
 app.use(express.json());

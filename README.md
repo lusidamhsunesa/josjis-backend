@@ -2,7 +2,7 @@
 
 [![Trello](https://img.shields.io/badge/Trello-0052CC?logo=trello&logoColor=fff)](#) [![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)](#) [![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=fff)](#) [![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)](#) [![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)](#) [![Redis](https://img.shields.io/badge/Redis-%23DD0031.svg?logo=redis&logoColor=white)](#) [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=fff)](#) [![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?logo=nodemon&logoColor=fff)](#) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#) [![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)](#) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lusidamhsunesa/josjis-backend)
 
-This project is intended as an experimental implementation using the Express.js framework, following industry standards through a modular architecture approach.
+This project is intended as an implementation using the Express.js framework, following industry standards through a modular architecture approach.
 
 ### How To Running this Project
 
@@ -85,13 +85,7 @@ This project is intended as an experimental implementation using the Express.js 
    npx prisma migrate dev
    ```
 
-4. Running Seed Database
-
-   ```bash
-   npm run user_seed
-   ```
-
-5. Choose Development or Production
+4. Choose Development or Production
    - Development
      ```bash
      npm run dev
@@ -108,28 +102,77 @@ This project is intended as an experimental implementation using the Express.js 
 │   ├── schema.prisma
 │   └── seed.js
 ├── resource                <-- Resource Postman and Database
-│   ├── Camp 4.postman_collection.json
+│   ├── API_JosJis_v1.postman_collection.json
 │   └── db.sql
 ├── src                     <-- Main Folder
 │   ├── config              <-- All Config Source
-│   │   └── db.config.js
+│   │   ├── admin.credential.js
+│   │   ├── cookiesDuration.config.js
+│   │   ├── db.config.js
+│   │   ├── env.check.js
+│   │   ├── logger.config.js
+│   │   ├── redis.config.js
+│   │   ├── s3.config.js
+│   │   └── sharp.config.js
 │   ├── middlewares         <-- All Middlewares Source
+│   │   ├── auth.middleware.js
+│   │   ├── authRole.middleware.js
+│   │   ├── cache.middleware.js
 │   │   ├── cors.js
-│   │   └── rate.limiter.js
+│   │   ├── handleUpdloadError.js
+│   │   ├── logger.js
+│   │   ├── rate.limiter.js
+│   │   └── upload.middleware.js
 │   ├── modules             <-- All Modules Source
-│   │   └── user
-│   │       ├── user.controller.js
-│   │       ├── user.repository.js
-│   │       ├── user.route.js
-│   │       ├── user.service.js
-│   │       └── user.validation.js
-│   ├── tests               <-- Testing Script
-│   │   ├── app.test.js
-│   │   └── user.test.js
+│   │   ├── auth
+│   │   │   ├── auth.controller.js
+│   │   │   ├── auth.repository.js
+│   │   │   ├── auth.route.js
+│   │   │   ├── auth.service.js
+│   │   │   └── auth.validation.js
+│   │   ├── order
+│   │   │   ├── order.controller.js
+│   │   │   ├── order.repository.js
+│   │   │   ├── order.route.js
+│   │   │   ├── order.service.js
+│   │   │   └── order.validation.js
+│   │   ├── payment
+│   │   │   ├── payment.controller.js
+│   │   │   ├── payment.repository.js
+│   │   │   ├── payment.route.js
+│   │   │   ├── payment.service.js
+│   │   │   └── payment.validation.js
+│   │   ├── products
+│   │   │   ├── products.controller.js
+│   │   │   ├── products.dto.js
+│   │   │   ├── products.repository.js
+│   │   │   ├── products.route.js
+│   │   │   ├── products.service.js
+│   │   │   └── products.validation.js
+│   │   ├── rating
+│   │   │   ├── rating.controller.js
+│   │   │   ├── rating.repository.js
+│   │   │   ├── rating.route.js
+│   │   │   ├── rating.service.js
+│   │   │   └── rating.validation.js
+│   │   ├── table
+│   │   │   ├── table.controller.js
+│   │   │   ├── table.repository.js
+│   │   │   ├── table.route.js
+│   │   │   ├── table.service.js
+│   │   │   └── table.validation.js
+│   │   └── webhook
+│   │       ├── webhook.controller.js
+│   │       ├── webhook.repository.js
+│   │       ├── webhook.route.js
+│   │       └── webhook.service.js
 │   ├── utils               <-- Utils to makes clean code
 │   │   ├── cache.js
-│   │   ├── redis.js
-│   │   └── response.js
+│   │   ├── cookies.js
+│   │   ├── jwt.js
+│   │   ├── midtrans.token.js
+│   │   ├── response.js
+│   │   └── s3.js
 │   ├── app.js              <-- Main app code
 │   └── server.js           <-- Server listen
 ├── package-lock.json
@@ -168,7 +211,7 @@ POST /api/auth/admin/login
    }
    ```
 
-3. LogOut Admin : POST /api/auth/admin/logout
+3. Logout Admin : POST /api/auth/admin/logout
 
    ```javascript
    headers: {
@@ -182,6 +225,6 @@ POST /api/auth/admin/login
 
 #### Resource :
 
-- Live API : [live here](https://josjis-service-v1.rafn.tech)
+- Live API : [live here](https://josjis-fnb.rafn.tech)
 
-- POSTMAN Documentation : [click here](https://documenter.getpostman.com/view/46893771/2sBXikori4)
+- POSTMAN Documentation : [click here](https://documenter.getpostman.com/view/46893771/2sBXqGr1vT)

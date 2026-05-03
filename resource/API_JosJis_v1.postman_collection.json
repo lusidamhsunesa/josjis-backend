@@ -1,0 +1,3069 @@
+{
+  "info": {
+    "_postman_id": "a8ea2da9-215b-4669-b243-8cef2283320f",
+    "name": "API JosJis v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46893771",
+    "_collection_link": "https://go.postman.co/collection/46893771-a8ea2da9-215b-4669-b243-8cef2283320f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Admin",
+          "item": [
+            {
+              "name": "Login Admin",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"admin@example.com\",\n    \"password\" : \"admin_password_here\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/auth/admin/login",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "admin",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Login Admin",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"email\" : \"admin@example.com\",\n    \"password\" : \"admin_password_here\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{URL}}/api/auth/admin/login",
+                      "host": [
+                        "{{URL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "admin",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "RateLimit",
+                      "value": "\"100-in-10min\"; r=99; t=600"
+                    },
+                    {
+                      "key": "RateLimit-Policy",
+                      "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3Njk0OTY5MiwiZXhwIjoxNzc2OTUzMjkyfQ.HLDzl4eFutLLO-z2-kVyVuKk2mpjnYhImycrxPw_TH8; Max-Age=3600; Path=/; Expires=Thu, 23 Apr 2026 14:08:12 GMT; HttpOnly; Secure; SameSite=Lax"
+                    },
+                    {
+                      "key": "Set-Cookie",
+                      "value": "refresh_token=39ac9c8087eda0f877f32036650f3f3a6bccbd9b26d4ff7f610f35098c45dbdf74db7e2befbb0db027a9603b6536a2d2c2f7059e853c673a2dcde33a0297ad7d; Max-Age=604800; Path=/; Expires=Thu, 30 Apr 2026 13:08:12 GMT; HttpOnly; Secure; SameSite=Lax"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "479"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"1df-xPhePoC4cUQV7ZxkOzPHEONx+9s\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 23 Apr 2026 13:08:12 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Admin logged in successfully\",\n    \"data\": {\n        \"user_id\": \"1bf90212-a775-4dbe-b7b9-36d813225f6b\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3Njk0OTY5MiwiZXhwIjoxNzc2OTUzMjkyfQ.HLDzl4eFutLLO-z2-kVyVuKk2mpjnYhImycrxPw_TH8\",\n        \"refreshToken\": \"39ac9c8087eda0f877f32036650f3f3a6bccbd9b26d4ff7f610f35098c45dbdf74db7e2befbb0db027a9603b6536a2d2c2f7059e853c673a2dcde33a0297ad7d\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Admin",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/auth/admin/me",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "admin",
+                    "me"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get Admin",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Cookie",
+                        "value": "acess_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3Njk0OTY5MiwiZXhwIjoxNzc2OTUzMjkyfQ.HLDzl4eFutLLO-z2-kVyVuKk2mpjnYhImycrxPw_TH8",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{URL}}/api/auth/admin/me",
+                      "host": [
+                        "{{URL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "admin",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "RateLimit",
+                      "value": "\"100-in-10min\"; r=99; t=600"
+                    },
+                    {
+                      "key": "RateLimit-Policy",
+                      "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "358"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"166-9RwPlii2y3aVPSDQGrcjvhureQc\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 23 Apr 2026 13:12:21 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Admin retrieved successfully\",\n    \"data\": {\n        \"id\": \"1bf90212-a775-4dbe-b7b9-36d813225f6b\",\n        \"name\": \"Admin\",\n        \"email\": \"admin@example.com\",\n        \"password\": \"$2b$10$QPrmuTFwmbMiKwlLbu4SSOnf6xsR60RijE.lTQsMN/oRtTDaGxxCK\",\n        \"role\": \"admin\",\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-17T13:30:19.184Z\",\n        \"updated_at\": \"2026-04-17T13:30:19.184Z\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Admin Refresh Token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/auth/admin/refresh-token",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "admin",
+                    "refresh-token"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get Admin Refresh Token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Cookie",
+                        "value": "refresh_token=39ac9c8087eda0f877f32036650f3f3a6bccbd9b26d4ff7f610f35098c45dbdf74db7e2befbb0db027a9603b6536a2d2c2f7059e853c673a2dcde33a0297ad7d",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{URL}}/api/auth/admin/refresh-token",
+                      "host": [
+                        "{{URL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "admin",
+                        "refresh-token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "RateLimit",
+                      "value": "\"100-in-10min\"; r=98; t=449"
+                    },
+                    {
+                      "key": "RateLimit-Policy",
+                      "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "290"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"122-jncvDzjiItf4NmMhR3sGfHAxyic\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 23 Apr 2026 13:14:53 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Refresh token retrieved successfully\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc2OTUwMDkzLCJleHAiOjE3NzY5NTM2OTN9.dTEgNyYzkiugvZFbyhzGYXe8wy1XGh3vK9MKRKFyhjs\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Logout Admin Token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/auth/admin/logout",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "admin",
+                    "logout"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Logout Admin Token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Cookie",
+                        "value": "acess_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3Njk0OTY5MiwiZXhwIjoxNzc2OTUzMjkyfQ.HLDzl4eFutLLO-z2-kVyVuKk2mpjnYhImycrxPw_TH8",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{URL}}/api/auth/admin/logout",
+                      "host": [
+                        "{{URL}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "admin",
+                        "logout"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "X-Powered-By",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "RateLimit",
+                      "value": "\"100-in-10min\"; r=97; t=372"
+                    },
+                    {
+                      "key": "RateLimit-Policy",
+                      "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "63"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"3f-mAo62V4H/YGILl5N5wpi0j3WrDA\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Thu, 23 Apr 2026 13:16:11 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Refresh token deleted successfully\"\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "nasi penyet",
+                  "type": "text",
+                  "uuid": "6799f983-8ba1-4be0-9dc9-741b5d44bd80"
+                },
+                {
+                  "key": "price",
+                  "value": "20000",
+                  "type": "text",
+                  "uuid": "8aed54ad-4652-48f2-b1d9-ac015777325b"
+                },
+                {
+                  "key": "description",
+                  "value": "nasi penyet murah meria",
+                  "type": "text",
+                  "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66"
+                },
+                {
+                  "key": "category",
+                  "value": "makanan",
+                  "type": "text",
+                  "uuid": "810ac8e1-498b-4706-8604-77fc20ed249f"
+                },
+                {
+                  "key": "img",
+                  "type": "file",
+                  "uuid": "7b162392-6775-42e5-8eed-6ef270588841",
+                  "src": [
+                    "postman-cloud:///1f13f180-6f68-4420-83e3-bdddc96f0f64",
+                    "postman-cloud:///1f13f180-7032-4e50-a068-3b507505eaae"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{URL}}/api/products",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Product",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "cooki",
+                    "value": "access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFiZjkwMjEyLWE3NzUtNGRiZS1iN2I5LTM2ZDgxMzIyNWY2YiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3Njk0OTY5MiwiZXhwIjoxNzc2OTUzMjkyfQ.HLDzl4eFutLLO-z2-kVyVuKk2mpjnYhImycrxPw_TH8",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "nasi penyet",
+                      "type": "text",
+                      "uuid": "6799f983-8ba1-4be0-9dc9-741b5d44bd80"
+                    },
+                    {
+                      "key": "price",
+                      "value": "20000",
+                      "type": "text",
+                      "uuid": "8aed54ad-4652-48f2-b1d9-ac015777325b"
+                    },
+                    {
+                      "key": "description",
+                      "value": "nasi penyet murah meria",
+                      "type": "text",
+                      "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66"
+                    },
+                    {
+                      "key": "category",
+                      "value": "makanan",
+                      "type": "text",
+                      "uuid": "810ac8e1-498b-4706-8604-77fc20ed249f"
+                    },
+                    {
+                      "key": "img",
+                      "type": "file",
+                      "uuid": "7b162392-6775-42e5-8eed-6ef270588841",
+                      "src": [
+                        "postman-cloud:///1f13f180-6f68-4420-83e3-bdddc96f0f64",
+                        "postman-cloud:///1f13f180-7032-4e50-a068-3b507505eaae"
+                      ]
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{URL}}/api/products",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "730"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2da-nepH/wTSMQVdIep5k38ICWH/AOM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 13:39:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Product created successfully\",\n    \"data\": {\n        \"id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n        \"name\": \"nasi penyet\",\n        \"description\": \"nasi penyet murah meria\",\n        \"category\": \"makanan\",\n        \"price\": \"20000\",\n        \"img_keys\": [\n            \"1776951540802-NASI-AYAM-PENYET-500x500.webp\",\n            \"1776951540824-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ],\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-23T13:39:01.704Z\",\n        \"updated_at\": \"2026-04-23T13:39:01.704Z\",\n        \"img_urls\": [\n            \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776951540802-NASI-AYAM-PENYET-500x500.webp\",\n            \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776951540824-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/products?limit=20&sortBy=created_at&order=asc",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "key": "search",
+                  "value": "penyet",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "created_at"
+                },
+                {
+                  "key": "order",
+                  "value": "asc"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/products?limit=20&sortBy=created_at&order=asc",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "search",
+                      "value": "penyet",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=97; t=426"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1716"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b4-GZ2Ohb2u39sEAiUZMB1/fepdYNE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 13:41:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"source\": \"db\",\n    \"success\": true,\n    \"message\": \"Products retrieved successfully\",\n    \"data\": {\n        \"products\": [\n            {\n                \"id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n                \"name\": \"ayam bakar\",\n                \"description\": \"ayam bakar khas jawa\",\n                \"category\": null,\n                \"price\": \"25000\",\n                \"img_keys\": [\n                    \"1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n                    \"1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n                    \"1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n                ],\n                \"is_active\": true,\n                \"is_deleted\": false,\n                \"created_at\": \"2026-04-21T14:35:25.445Z\",\n                \"updated_at\": \"2026-04-21T14:35:25.445Z\",\n                \"img_urls\": [\n                    \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n                    \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n                    \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n                ]\n            },\n            {\n                \"id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                \"name\": \"nasi penyet\",\n                \"description\": \"nasi penyet murah meria\",\n                \"category\": \"makanan\",\n                \"price\": \"20000\",\n                \"img_keys\": [\n                    \"1776951540802-NASI-AYAM-PENYET-500x500.webp\",\n                    \"1776951540824-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n                ],\n                \"is_active\": true,\n                \"is_deleted\": false,\n                \"created_at\": \"2026-04-23T13:39:01.704Z\",\n                \"updated_at\": \"2026-04-23T13:39:01.704Z\",\n                \"img_urls\": [\n                    \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776951540802-NASI-AYAM-PENYET-500x500.webp\",\n                    \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776951540824-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n                ]\n            }\n        ],\n        \"meta\": {\n            \"total\": 2,\n            \"page\": 1,\n            \"limit\": 20,\n            \"totalPages\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Product by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Product by Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products",
+                    "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=90; t=218"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "983"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3d7-s+RmlAGQoQerUtfj8t5k5B3m1MQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 13:45:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"source\": \"cache\",\n    \"success\": true,\n    \"message\": \"Product retrieved successfully\",\n    \"data\": {\n        \"id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n        \"name\": \"ayam bakar\",\n        \"description\": \"ayam bakar khas jawa\",\n        \"category\": null,\n        \"price\": \"25000\",\n        \"img_keys\": [\n            \"1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n            \"1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n            \"1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ],\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-21T14:35:25.445Z\",\n        \"updated_at\": \"2026-04-21T14:35:25.445Z\",\n        \"img_urls\": [\n            \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n            \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n            \"https://swtmvxurcrmjrvfbqqld.supabase.co/storage/v1/object/public/josjis/uploads/1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "test update",
+                  "type": "text",
+                  "uuid": "6799f983-8ba1-4be0-9dc9-741b5d44bd80"
+                },
+                {
+                  "key": "price",
+                  "value": "10000",
+                  "type": "text",
+                  "uuid": "8aed54ad-4652-48f2-b1d9-ac015777325b"
+                },
+                {
+                  "key": "description",
+                  "value": "test",
+                  "type": "text",
+                  "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66"
+                },
+                {
+                  "key": "img",
+                  "type": "file",
+                  "uuid": "473fbb38-9947-4ad6-9331-7138df8509f3",
+                  "src": "/Users/frafgaabdullahrafertydza/Downloads/db-experrimental-ecommerce.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Product",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "test update",
+                      "type": "text",
+                      "uuid": "6799f983-8ba1-4be0-9dc9-741b5d44bd80"
+                    },
+                    {
+                      "key": "price",
+                      "value": "10000",
+                      "type": "text",
+                      "uuid": "8aed54ad-4652-48f2-b1d9-ac015777325b"
+                    },
+                    {
+                      "key": "description",
+                      "value": "test",
+                      "type": "text",
+                      "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66"
+                    },
+                    {
+                      "key": "img",
+                      "type": "file",
+                      "uuid": "473fbb38-9947-4ad6-9331-7138df8509f3",
+                      "src": "/Users/frafgaabdullahrafertydza/Downloads/db-experrimental-ecommerce.png",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products",
+                    "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=89"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "502"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1f6-FN1Lr/al6DqHA/uihHU8SBv+l6I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:23:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Product updated successfully\",\n    \"data\": {\n        \"id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n        \"name\": \"test update\",\n        \"description\": \"test\",\n        \"category\": null,\n        \"price\": \"10000\",\n        \"img_keys\": [\n            \"1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n            \"1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n            \"1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ],\n        \"is_active\": true,\n        \"is_deleted\": true,\n        \"created_at\": \"2026-04-21T14:35:25.445Z\",\n        \"updated_at\": \"2026-04-21T14:35:25.445Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Product",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products",
+                    "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=97; t=59"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "502"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1f6-oAKAspfWHoalS3JDQ2pVdosUlIc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:24:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Product deleted successfully\",\n    \"data\": {\n        \"id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n        \"name\": \"test update\",\n        \"description\": \"test\",\n        \"category\": null,\n        \"price\": \"10000\",\n        \"img_keys\": [\n            \"1776782121061-298c04e9-2b1d-47c4-9439-b4c43c8d0e13_Go-Biz_20220613_185713.webp\",\n            \"1776782121069-NASI-AYAM-PENYET-500x500.webp\",\n            \"1776782121088-Penyetan-Cok-Menu-Paket-Cobek-Rempelo-Ati.webp\"\n        ],\n        \"is_active\": true,\n        \"is_deleted\": true,\n        \"created_at\": \"2026-04-21T14:35:25.445Z\",\n        \"updated_at\": \"2026-04-21T14:35:25.445Z\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tableId\" : \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n    \"items\" : [\n        {\n        \"productId\" : \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n        \"quantity\" : 2,\n        \"notes\" : \"catatan\"\n        }\n        // {\n        // \"productId\" : \"058d814d-7350-479e-aa1c-fbc43a055b74\",\n        // \"quantity\" : 1\n        // }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/orders",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Order",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"tableId\" : \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n    \"items\" : [\n        {\n        \"productId\" : \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n        \"quantity\" : 2,\n        \"notes\" : \"catatan\"\n        }\n        // {\n        // \"productId\" : \"058d814d-7350-479e-aa1c-fbc43a055b74\",\n        // \"quantity\" : 1\n        // }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/orders",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "581"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"245-Bf7GankVOMhyrKVMCGnzucPz1mU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:43:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Order created successfully\",\n    \"data\": {\n        \"id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n        \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n        \"status\": \"pending\",\n        \"total_amount\": \"40000\",\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-23T14:43:18.498Z\",\n        \"updated_at\": \"2026-04-23T14:43:18.498Z\",\n        \"order_items\": [\n            {\n                \"id\": \"80254af2-27ba-4a60-978e-11569d793878\",\n                \"order_id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                \"qty\": 2,\n                \"price\": \"20000\",\n                \"subtotal\": \"40000\",\n                \"notes\": \"catatan\",\n                \"created_at\": \"2026-04-23T14:43:18.498Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/orders",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "search",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "order",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Order",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/orders",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "2",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "2",
+                      "disabled": true
+                    },
+                    {
+                      "key": "search",
+                      "value": null,
+                      "disabled": true
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": null,
+                      "disabled": true
+                    },
+                    {
+                      "key": "order",
+                      "value": null,
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=574"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1696"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6a0-xBbEIlEBfuVDy+LzEL2b3FPQuww\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:46:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"source\": \"cache\",\n    \"success\": true,\n    \"message\": \"Orders retrieved successfully\",\n    \"data\": {\n        \"orders\": [\n            {\n                \"id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n                \"status\": \"pending\",\n                \"total_amount\": \"40000\",\n                \"is_active\": true,\n                \"is_deleted\": false,\n                \"created_at\": \"2026-04-23T14:43:18.498Z\",\n                \"updated_at\": \"2026-04-23T14:43:18.498Z\",\n                \"order_items\": [\n                    {\n                        \"id\": \"80254af2-27ba-4a60-978e-11569d793878\",\n                        \"order_id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                        \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                        \"qty\": 2,\n                        \"price\": \"20000\",\n                        \"subtotal\": \"40000\",\n                        \"notes\": \"catatan\",\n                        \"created_at\": \"2026-04-23T14:43:18.498Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"a0fa4a48-ad56-4faf-b086-489f1e641dfe\",\n                \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n                \"status\": \"pending\",\n                \"total_amount\": \"40000\",\n                \"is_active\": true,\n                \"is_deleted\": false,\n                \"created_at\": \"2026-04-23T14:36:32.947Z\",\n                \"updated_at\": \"2026-04-23T14:36:32.947Z\",\n                \"order_items\": [\n                    {\n                        \"id\": \"ea2aa51a-6411-47ba-aa77-747ac49c3a5e\",\n                        \"order_id\": \"a0fa4a48-ad56-4faf-b086-489f1e641dfe\",\n                        \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                        \"qty\": 2,\n                        \"price\": \"20000\",\n                        \"subtotal\": \"40000\",\n                        \"notes\": null,\n                        \"created_at\": \"2026-04-23T14:36:32.947Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n                \"status\": \"pending\",\n                \"total_amount\": \"50000\",\n                \"is_active\": true,\n                \"is_deleted\": false,\n                \"created_at\": \"2026-04-21T14:41:02.947Z\",\n                \"updated_at\": \"2026-04-21T14:41:02.947Z\",\n                \"order_items\": [\n                    {\n                        \"id\": \"f145e991-9f40-45a4-aaaf-5fba45eca180\",\n                        \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                        \"product_id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n                        \"qty\": 2,\n                        \"price\": \"25000\",\n                        \"subtotal\": \"50000\",\n                        \"notes\": null,\n                        \"created_at\": \"2026-04-21T14:41:02.947Z\"\n                    }\n                ]\n            }\n        ],\n        \"meta\": {\n            \"total\": 3,\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/orders/ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Order by Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/orders/ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders",
+                    "ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=94; t=450"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "600"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"258-9BKhQpFgJdhS/v60U5eHHHyBQV8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:48:13 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"source\": \"cache\",\n    \"success\": true,\n    \"message\": \"Order retrieved successfully\",\n    \"data\": {\n        \"id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n        \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n        \"status\": \"pending\",\n        \"total_amount\": \"40000\",\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-23T14:43:18.498Z\",\n        \"updated_at\": \"2026-04-23T14:43:18.498Z\",\n        \"order_items\": [\n            {\n                \"id\": \"80254af2-27ba-4a60-978e-11569d793878\",\n                \"order_id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                \"qty\": 2,\n                \"price\": \"20000\",\n                \"subtotal\": \"40000\",\n                \"notes\": \"catatan\",\n                \"created_at\": \"2026-04-23T14:43:18.498Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order by Table Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/orders/table/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "table",
+                "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Order by Table Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/orders/table/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders",
+                    "table",
+                    "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1613"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"64d-0abkqFKa1HRI5hq59/zGkMBdaog\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:50:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Order retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n            \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n            \"status\": \"pending\",\n            \"total_amount\": \"50000\",\n            \"is_active\": true,\n            \"is_deleted\": false,\n            \"created_at\": \"2026-04-21T14:41:02.947Z\",\n            \"updated_at\": \"2026-04-21T14:41:02.947Z\",\n            \"order_items\": [\n                {\n                    \"id\": \"f145e991-9f40-45a4-aaaf-5fba45eca180\",\n                    \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                    \"product_id\": \"32dfba55-08c7-4b79-a8ee-fdd29ae34b40\",\n                    \"qty\": 2,\n                    \"price\": \"25000\",\n                    \"subtotal\": \"50000\",\n                    \"notes\": null,\n                    \"created_at\": \"2026-04-21T14:41:02.947Z\"\n                }\n            ]\n        },\n        {\n            \"id\": \"a0fa4a48-ad56-4faf-b086-489f1e641dfe\",\n            \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n            \"status\": \"pending\",\n            \"total_amount\": \"40000\",\n            \"is_active\": true,\n            \"is_deleted\": false,\n            \"created_at\": \"2026-04-23T14:36:32.947Z\",\n            \"updated_at\": \"2026-04-23T14:36:32.947Z\",\n            \"order_items\": [\n                {\n                    \"id\": \"ea2aa51a-6411-47ba-aa77-747ac49c3a5e\",\n                    \"order_id\": \"a0fa4a48-ad56-4faf-b086-489f1e641dfe\",\n                    \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                    \"qty\": 2,\n                    \"price\": \"20000\",\n                    \"subtotal\": \"40000\",\n                    \"notes\": null,\n                    \"created_at\": \"2026-04-23T14:36:32.947Z\"\n                }\n            ]\n        },\n        {\n            \"id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n            \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n            \"status\": \"pending\",\n            \"total_amount\": \"40000\",\n            \"is_active\": true,\n            \"is_deleted\": false,\n            \"created_at\": \"2026-04-23T14:43:18.498Z\",\n            \"updated_at\": \"2026-04-23T14:43:18.498Z\",\n            \"order_items\": [\n                {\n                    \"id\": \"80254af2-27ba-4a60-978e-11569d793878\",\n                    \"order_id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                    \"product_id\": \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n                    \"qty\": 2,\n                    \"price\": \"20000\",\n                    \"subtotal\": \"40000\",\n                    \"notes\": \"catatan\",\n                    \"created_at\": \"2026-04-23T14:43:18.498Z\"\n                }\n            ]\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\" : \"cancelled\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Order",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\" : \"cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders",
+                    "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=376"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "325"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"145-1jVy+fpQZaHF0qVIQnKgkPUGCws\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:53:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Order status updated successfully\",\n    \"data\": {\n        \"id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n        \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n        \"status\": \"cancelled\",\n        \"total_amount\": \"50000\",\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-21T14:41:02.947Z\",\n        \"updated_at\": \"2026-04-21T14:41:02.947Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Product",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "orders",
+                    "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"37-r4yR/JxOrZMIa7vwBLav1QeE0XI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Apr 2026 14:56:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Order deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Create Payment",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"494378da-b777-45d9-8ca4-6ff280e0bbb2\",\n    \"method\" : \"midtrans\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/payments",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "payments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Payment Midtrans",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"orderId\": \"2401b9e8-7cf2-4707-bdb6-e17866d1ef64\",\n    \"method\" : \"midtrans\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/payments",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=591"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "220"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"dc-jX+2reRSx1/qgIH8uFHc76mcNog\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 01:35:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment created successfully\",\n    \"data\": {\n        \"token\": \"d7a2d7aa-80de-407c-87e8-2c0c2b795570\",\n        \"redirect_url\": \"https://app.sandbox.midtrans.com/snap/v4/redirection/d7a2d7aa-80de-407c-87e8-2c0c2b795570\"\n    }\n}"
+            },
+            {
+              "name": "Create Payment Cash",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"orderId\": \"259160e8-9ce1-448e-8f43-ce84478b2676\",\n    \"method\" : \"cash\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/payments",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=585"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "286"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"11e-QFOnOR2Kg02JDvt1pMH+GRgLhts\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 02:04:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment created successfully\",\n    \"data\": {\n        \"id\": \"2417b30d-4166-4002-9dcc-aa80b6fc83bb\",\n        \"order_id\": \"259160e8-9ce1-448e-8f43-ce84478b2676\",\n        \"method\": \"cash\",\n        \"amount\": \"40000\",\n        \"status\": \"unpaid\",\n        \"midtrans_token\": \"\",\n        \"paid_at\": null,\n        \"created_at\": \"2026-04-25T02:04:42.448Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Payment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/payments?method=cash",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "amount",
+                  "disabled": true
+                },
+                {
+                  "key": "order",
+                  "value": "desc",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "pending",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "method",
+                  "value": "cash"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Payment",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/payments",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": true
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10",
+                      "disabled": true
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "amount",
+                      "disabled": true
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc",
+                      "disabled": true
+                    },
+                    {
+                      "key": "status",
+                      "value": "pending",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "method",
+                      "value": "midtrans",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=95; t=506"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2006"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7d6-z7/EeiTSGVz5D/QCeXUafcBXRUY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 01:51:01 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payments retrieved successfully\",\n    \"data\": {\n        \"payments\": [\n            {\n                \"id\": \"df3ed7c5-9211-416c-ade1-2fbb9ec22a3b\",\n                \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                \"method\": \"midtrans\",\n                \"amount\": \"50000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-21T14:41:28.538Z\"\n            },\n            {\n                \"id\": \"6fc113a4-a7a6-419c-bbf9-9983b253c975\",\n                \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                \"method\": \"midtrans\",\n                \"amount\": \"50000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-21T14:51:06.606Z\"\n            },\n            {\n                \"id\": \"fa9b1dc6-93d9-49e1-a5bb-7b60e05d32bf\",\n                \"order_id\": \"ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:25:23.912Z\"\n            },\n            {\n                \"id\": \"fed52783-c577-450a-a356-db7efb600b0f\",\n                \"order_id\": \"c209fb43-f509-435b-b38d-2e9e379115f2\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:29:00.209Z\"\n            },\n            {\n                \"id\": \"a3835d4e-a88a-451f-9c56-7d78558773da\",\n                \"order_id\": \"566c25e3-461b-4959-8840-54e29178d1cf\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:34:08.963Z\"\n            },\n            {\n                \"id\": \"8df3b64a-c08a-4573-a6d1-d561ecd05cd8\",\n                \"order_id\": \"2401b9e8-7cf2-4707-bdb6-e17866d1ef64\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:35:22.328Z\"\n            },\n            {\n                \"id\": \"d3c8a473-09c4-4b91-8141-2c0a8909fe23\",\n                \"order_id\": \"7bb1fc1c-e849-45df-8d60-7264bdbddec8\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"[object Undefined]\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:37:21.110Z\"\n            },\n            {\n                \"id\": \"11cf3637-58f5-4e2b-afc1-df4f5c289a06\",\n                \"order_id\": \"259160e8-9ce1-448e-8f43-ce84478b2676\",\n                \"method\": \"midtrans\",\n                \"amount\": \"40000\",\n                \"status\": \"pending\",\n                \"midtrans_token\": \"3d23aae8-6909-4f97-a165-e1b27ae5820d\",\n                \"paid_at\": null,\n                \"created_at\": \"2026-04-25T01:39:29.786Z\"\n            }\n        ],\n        \"meta\": {\n            \"total\": 8,\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Payment by OrderID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/payments/order/259160e8-9ce1-448e-8f43-ce84478b2676",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "order",
+                "259160e8-9ce1-448e-8f43-ce84478b2676"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Payment by OrderID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/payments/order/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments",
+                    "order",
+                    "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "522"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"20a-2IDcqGAzpfzWRJ/gYiZizeUKkTc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 01:57:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": \"df3ed7c5-9211-416c-ade1-2fbb9ec22a3b\",\n            \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n            \"method\": \"midtrans\",\n            \"amount\": \"50000\",\n            \"status\": \"pending\",\n            \"midtrans_token\": \"\",\n            \"paid_at\": null,\n            \"created_at\": \"2026-04-21T14:41:28.538Z\"\n        },\n        {\n            \"id\": \"6fc113a4-a7a6-419c-bbf9-9983b253c975\",\n            \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n            \"method\": \"midtrans\",\n            \"amount\": \"50000\",\n            \"status\": \"pending\",\n            \"midtrans_token\": \"\",\n            \"paid_at\": null,\n            \"created_at\": \"2026-04-21T14:51:06.606Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Payment Cash",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Payment Cash",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\": \"paid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments",
+                    "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=93; t=505"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "291"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"123-6o0qZKSpcHp58xlG7YqVV9MfSvk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 02:06:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment status updated successfully\",\n    \"data\": {\n        \"id\": \"2417b30d-4166-4002-9dcc-aa80b6fc83bb\",\n        \"order_id\": \"259160e8-9ce1-448e-8f43-ce84478b2676\",\n        \"method\": \"cash\",\n        \"amount\": \"40000\",\n        \"status\": \"paid\",\n        \"midtrans_token\": \"\",\n        \"paid_at\": null,\n        \"created_at\": \"2026-04-25T02:04:42.448Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Payment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Payment",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "payments",
+                    "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=92; t=485"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "57"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"39-PqwDdGgtZGvc4hz7yLSWxFKv/MY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 02:06:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "item": [
+        {
+          "name": "Create Table",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\" : \"Meja 2\",\n    \"capacity\" : 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/tables",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "tables"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Table",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Meja 2\",\n    \"capacity\" : 4\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/tables",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tables"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=594"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "253"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fd-ay3Mkpx0CqdJF4bsahpGrB1SUSw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 23:35:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Table created successfully\",\n    \"data\": {\n        \"id\": \"8873f77a-6c42-491c-9e93-581b978e0c7c\",\n        \"name\": \"Meja 2\",\n        \"capacity\": 4,\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-24T23:35:51.394Z\",\n        \"updated_at\": \"2026-04-24T23:35:51.394Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Table",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/tables",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "tables"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Table",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/tables",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tables"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=597"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "466"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1d2-Sd1lLT/M+IBhpWdSFzWsBOzzRfM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 23:43:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"source\": \"cache\",\n    \"success\": true,\n    \"message\": \"Tables retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n            \"name\": \"Meja 1\",\n            \"capacity\": 2,\n            \"is_active\": true,\n            \"is_deleted\": false,\n            \"created_at\": \"2026-04-21T14:38:39.632Z\",\n            \"updated_at\": \"2026-04-21T14:38:39.632Z\"\n        },\n        {\n            \"id\": \"8873f77a-6c42-491c-9e93-581b978e0c7c\",\n            \"name\": \"Meja 2\",\n            \"capacity\": 4,\n            \"is_active\": true,\n            \"is_deleted\": false,\n            \"created_at\": \"2026-04-24T23:35:51.394Z\",\n            \"updated_at\": \"2026-04-24T23:35:51.394Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Table",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\" : \"Meja 1 Update\",\n    \"capacity\" : 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Table",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Meja 1 Update\",\n    \"capacity\" : 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tables",
+                    "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=97; t=458"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "260"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"104-+eBfcOJVxgCVA3G2D/LtJSIJdcc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 23:45:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Table updated successfully\",\n    \"data\": {\n        \"id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n        \"name\": \"Meja 1 Update\",\n        \"capacity\": 1,\n        \"is_active\": true,\n        \"is_deleted\": false,\n        \"created_at\": \"2026-04-21T14:38:39.632Z\",\n        \"updated_at\": \"2026-04-21T14:38:39.632Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Table",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Table",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tables",
+                    "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=96; t=416"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"37-Y3x7Utqwddmrkm8NmR1lWGdoGEM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 23:46:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Table deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rating",
+      "item": [
+        {
+          "name": "Create Rating",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\" : \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n    \"rating\" : 5,\n    \"comment\" : \"testi dari pelanggan terbaik\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/ratings",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "ratings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Rating",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"orderId\" : \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n    \"rating\" : 5,\n    \"comment\" : \"testi dari pelanggan terbaik\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/ratings",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "ratings"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=98; t=591"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "251"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fb-kPqMFPfe863wv0GdzgU2ikiSEgA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 00:49:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Rating created successfully\",\n    \"data\": {\n        \"id\": \"52f58b16-959c-4b5f-a0c0-a9f40bce67cd\",\n        \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n        \"rating\": 5,\n        \"comment\": \"testi dari pelanggan terbaik\",\n        \"created_at\": \"2026-04-25T00:49:08.400Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Rating",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/ratings",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "ratings"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "created_at",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "order",
+                  "value": "desc",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "ratingValue",
+                  "value": "1",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Rating",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/ratings",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "ratings"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "2",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=97; t=562"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "322"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"142-H8hU+4A80itqZKsQJUi9yTaAzGs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 00:49:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Ratings retrieved successfully\",\n    \"data\": {\n        \"ratings\": [\n            {\n                \"id\": \"52f58b16-959c-4b5f-a0c0-a9f40bce67cd\",\n                \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                \"rating\": 5,\n                \"comment\": \"testi dari pelanggan terbaik\",\n                \"created_at\": \"2026-04-25T00:49:08.400Z\"\n            }\n        ],\n        \"meta\": {\n            \"total\": 1,\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Rating by Order Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{URL}}/api/ratings/order/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "ratings",
+                "order",
+                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Rating by Order Id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/ratings/order/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "ratings",
+                    "order",
+                    "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "520"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"208-YWk9fdw9zAN4QhbYfEhw2Q6Kgkg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 00:54:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Ratings retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": \"52f58b16-959c-4b5f-a0c0-a9f40bce67cd\",\n            \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n            \"rating\": 5,\n            \"comment\": \"testi dari pelanggan terbaik\",\n            \"created_at\": \"2026-04-25T00:49:08.400Z\",\n            \"orders\": {\n                \"id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n                \"table_id\": \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n                \"status\": \"cancelled\",\n                \"total_amount\": \"50000\",\n                \"is_active\": true,\n                \"is_deleted\": true,\n                \"created_at\": \"2026-04-21T14:41:02.947Z\",\n                \"updated_at\": \"2026-04-21T14:41:02.947Z\"\n            }\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Rating",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\" : 2,\n    \"comment\" : \"update pelayanan tidak ramah\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/ratings/52f58b16-959c-4b5f-a0c0-a9f40bce67cd",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "ratings",
+                "52f58b16-959c-4b5f-a0c0-a9f40bce67cd"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Rating",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"rating\" : 2,\n    \"comment\" : \"update pelayanan tidak ramah\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{URL}}/api/ratings/52f58b16-959c-4b5f-a0c0-a9f40bce67cd",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "ratings",
+                    "52f58b16-959c-4b5f-a0c0-a9f40bce67cd"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"100-in-10min\"; r=99; t=600"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"100-in-10min\"; q=100; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "251"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fb-UvHTaEI0JJ/7hThzzgHk5aimU7I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 01:02:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Rating updated successfully\",\n    \"data\": {\n        \"id\": \"52f58b16-959c-4b5f-a0c0-a9f40bce67cd\",\n        \"order_id\": \"5dfc20b8-a53d-4464-a92b-4d9598cf7e1d\",\n        \"rating\": 2,\n        \"comment\": \"update pelayanan tidak ramah\",\n        \"created_at\": \"2026-04-25T00:49:08.400Z\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "URL",
+      "value": ""
+    },
+    {
+      "key": "USER_ID",
+      "value": ""
+    },
+    {
+      "key": "COOKIES_ACCESS_TOKEN",
+      "value": ""
+    },
+    {
+      "key": "COOKIES_GUEST_ID",
+      "value": ""
+    },
+    {
+      "key": "COOKIES_REFRESH_TOKEN",
+      "value": ""
+    }
+  ]
+}

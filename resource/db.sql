@@ -3,10 +3,6 @@ CREATE TABLE "users" (
   "name" varchar,
   "email" varchar UNIQUE,
   "password" varchar,
-  "guest_token" varchar UNIQUE,
-  "is_guest" bool DEFAULT true,
-  "user_agent" varchar,
-  "device_ip" varchar,
   "is_active" bool DEFAULT true,
   "is_deleted" bool DEFAULT false,
   "created_at" timestamptz DEFAULT (now()),
@@ -18,8 +14,6 @@ CREATE TABLE "refresh_token" (
   "id" uuid PRIMARY KEY DEFAULT (gen_random_uuid()),
   "user_id" uuid NOT NULL,
   "token" varchar,
-  "user_agent" varchar,
-  "device_ip" varchar,
   "created_at" timestamptz DEFAULT (now()),
   "expired_at" timestamptz,
   "revoked_at" timestamptz
@@ -40,7 +34,6 @@ CREATE TABLE "products" (
 
 CREATE TABLE "orders" (
   "id" uuid PRIMARY KEY DEFAULT (gen_random_uuid()),
-  "user_id" uuid,
   "table_id" uuid,
   "status" varchar,
   "total_amount" numeric(12,2),
@@ -100,8 +93,6 @@ COMMENT ON COLUMN "payments"."status" IS 'pending, success, failed';
 COMMENT ON COLUMN "ratings"."rating" IS '1-5';
 
 ALTER TABLE "refresh_token" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id") DEFERRABLE INITIALLY IMMEDIATE;
-
-ALTER TABLE "orders" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id") DEFERRABLE INITIALLY IMMEDIATE;
 
 ALTER TABLE "orders" ADD FOREIGN KEY ("table_id") REFERENCES "tables" ("id") DEFERRABLE INITIALLY IMMEDIATE;
 
