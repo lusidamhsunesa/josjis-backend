@@ -1,6 +1,6 @@
 import * as service from "./auth.service.js";
 import { successResponse, errorResponse } from "../../utils/response.js";
-import { setCookies } from "../../utils/cookies.js";
+import { setCookies, deleteCookies } from "../../utils/cookies.js";
 import { cookiesDuration } from "../../config/cookiesDuration.config.js";
 import * as validation from "./auth.validation.js";
 
@@ -27,6 +27,8 @@ export const deleteRefreshToken = async (req, res) => {
   try {
     const userId = req.user.id;
     await service.deleteRefreshToken(userId);
+    deleteCookies(res, "refresh_token");
+    deleteCookies(res, "access_token");
     return successResponse(
       res,
       "Refresh token deleted successfully",
