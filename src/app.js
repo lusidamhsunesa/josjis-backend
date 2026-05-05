@@ -9,12 +9,14 @@ import limiter from "./middlewares/rate.limiter.js";
 import logger from "./middlewares/logger.js";
 import adminCredentials from "./config/admin.credential.js";
 import webhookRoute from "./modules/webhook/webhook.route.js";
+import cors from "./middlewares/cors.js";
 import cookieParser from "cookie-parser";
 
 const app = express();
 
 app.set("trust proxy", 1);
 
+app.use(cors);
 app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
