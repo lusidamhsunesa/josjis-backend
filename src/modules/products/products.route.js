@@ -13,6 +13,8 @@ const router = Router();
 
 router.post(
   "/",
+  authMiddleware,
+  authorizeRoles("admin"),
   handleUploadError(upload.array("img", 5)),
   controller.createProduct,
 );
