@@ -1,7 +1,10 @@
 import Joi from "joi";
 
 export const createOrderSchema = Joi.object({
-  tableId: Joi.string().uuid().required(),
+  tableId: Joi.string().uuid().messages({
+    "string.base": "Table ID must be a string",
+    "string.uuid": "Table ID must be a valid UUID",
+  }),
 
   items: Joi.array()
     .items(
@@ -21,7 +24,11 @@ export const createOrderSchema = Joi.object({
 export const updateOrderStatusSchema = Joi.object({
   status: Joi.string()
     .valid("pending", "in_progress", "completed", "cancelled")
-    .required(),
+    .required()
+    .messages({
+      "any.only":
+        "Status must be one of 'pending', 'in_progress', 'completed', or 'cancelled'",
+    }),
 });
 
 export const paginationSchema = Joi.object({
