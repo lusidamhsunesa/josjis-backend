@@ -11,7 +11,7 @@ export const getRefreshToken = async (refreshToken) => {
   }
   const accessToken = generateAccessToken(
     userRefreshToken.user_id,
-    userRefreshToken.role,
+    userRefreshToken.users.role,
   );
   return accessToken;
 };

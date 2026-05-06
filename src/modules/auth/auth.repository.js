@@ -19,6 +19,9 @@ export const getUserRefreshToken = async (refreshToken) => {
         gt: new Date(),
       },
     },
+    include: {
+      users: true,
+    },
   });
   return userRefreshToken;
 };
