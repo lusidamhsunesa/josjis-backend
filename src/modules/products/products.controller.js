@@ -87,15 +87,17 @@ export const updateProduct = async (req, res) => {
       return errorResponse(res, error.details[0].message, null, 422);
     }
 
-    const { name, price, description } = value;
+    const { name, price, description, is_active, is_deleted } = value;
     const imgs = req.files;
-    console.log("imgs in controller:", imgs);
+    // console.log("imgs in controller:", imgs);
     const updatedProduct = await service.updateProduct(
       id,
       {
         name,
         price,
         description,
+        is_active,
+        is_deleted,
       },
       imgs,
     );

@@ -72,4 +72,10 @@ export const updateProductSchema = Joi.object({
     "number.base": "Price must be a number",
     "number.positive": "Price must be a positive number",
   }),
+  is_active: Joi.boolean().messages({
+    "boolean.base": "Is Active must be a boolean",
+  }),
+  is_deleted: Joi.boolean().messages({
+    "boolean.base": "Is Deleted must be a boolean",
+  }),
 });
