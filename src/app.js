@@ -11,11 +11,15 @@ import adminCredentials from "./config/admin.credential.js";
 import webhookRoute from "./modules/webhook/webhook.route.js";
 import cors from "./middlewares/cors.js";
 import cookieParser from "cookie-parser";
+import http from "http";
+import { initSocket } from "./config/socket.config.js";
 
 const app = express();
+const server = http.createServer(app);
 
 app.set("trust proxy", 1);
 
+initSocket(server);
 app.use(cors);
 app.use(limiter);
 app.use(express.json());
@@ -34,4 +38,4 @@ app.use("/api/payments", paymentRoute);
 app.use("/api/tables", tableRoute);
 app.use("/api/ratings", ratingRoute);
 app.use("/api/midtrans/webhooks", webhookRoute);
-export default app;
+export default server;

@@ -67,7 +67,11 @@ export const getOrders = async ({
   const orders = await db.orders.findMany({
     where: whereCondition,
     include: {
-      order_items: true,
+      order_items: {
+        include: {
+          products: true,
+        },
+      },
     },
     orderBy: {
       [sortBy]: order,
@@ -95,7 +99,11 @@ export const getOrderById = async (id) => {
   return await db.orders.findUnique({
     where: { id },
     include: {
-      order_items: true,
+      order_items: {
+        include: {
+          products: true,
+        },
+      },
     },
   });
 };

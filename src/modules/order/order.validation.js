@@ -23,11 +23,11 @@ export const createOrderSchema = Joi.object({
 
 export const updateOrderStatusSchema = Joi.object({
   status: Joi.string()
-    .valid("pending", "in_progress", "completed", "cancelled")
+    .valid("pending", "in_progress", "can_be_taken", "completed", "cancelled")
     .required()
     .messages({
       "any.only":
-        "Status must be one of 'pending', 'in_progress', 'completed', or 'cancelled'",
+        "Status must be one of 'pending', 'in_progress', 'can_be_taken', 'completed', or 'cancelled'",
     }),
 });
 

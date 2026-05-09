@@ -1,6 +1,7 @@
 import * as repository from "./order.repository.js";
 import db from "../../config/db.config.js";
 import { cache } from "../../utils/cache.js";
+import { getIO } from "../../config/socket.config.js";
 
 const invalidateOrdersCache = async (id = null) => {
   await cache.del("cache:admin:/api/orders*");
@@ -58,6 +59,10 @@ export const createOrder = async (tableId, data) => {
       items: orderItems,
     });
 
+    const io = getIO();
+
+    io.to(`order:${order.id}`).emit("order:created", order);
+
     return order;
   });
 };
@@ -90,6 +95,14 @@ export const getOrderByTableId = async (tableId) => {
 export const updateOrderStatus = async (id, status) => {
   invalidateOrdersCache();
   const updatedOrder = await repository.updateOrderStatus(id, status);
+  const io = getIO();
+
+  io.to(`order:${id}`).emit("order:status", {
+    orderId: id,
+    status,
+    data: updatedOrder,
+  });
+
   return updatedOrder;
 };
 

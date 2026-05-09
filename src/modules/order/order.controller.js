@@ -7,7 +7,7 @@ export const createOrder = async (req, res) => {
     const { error, value } = validation.createOrderSchema.validate(req.body);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(res, error, error.details[0].message, null, 422);
     }
 
     const tableId = value.tableId;
@@ -24,7 +24,7 @@ export const getOrders = async (req, res) => {
     const { error, value } = validation.paginationSchema.validate(req.query);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(res, error, error.details[0].message, null, 422);
     }
     const role = req.user.role;
     const { page, limit, search, sortBy, order } = value;
@@ -48,7 +48,7 @@ export const getOrderById = async (req, res) => {
     const id = req.params.id;
     const order = await service.getOrderById(id);
     if (!order) {
-      return errorResponse(res, "Order not found", null, 404);
+      return errorResponse(res, error, "Order not found", null, 404);
     }
     return successResponse(res, "Order retrieved successfully", order, 200);
   } catch (error) {
@@ -62,7 +62,7 @@ export const getOrderByTableId = async (req, res) => {
     const tableId = req.params.tableId;
     const order = await service.getOrderByTableId(tableId);
     if (!order) {
-      return errorResponse(res, "Order not found", null, 404);
+      return errorResponse(res, error, "Order not found", null, 404);
     }
     return successResponse(res, "Order retrieved successfully", order, 200);
   } catch (error) {
@@ -79,13 +79,13 @@ export const updateOrderStatus = async (req, res) => {
     );
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(res, error, error.details[0].message, null, 422);
     }
 
     const updatedOrder = await service.updateOrderStatus(id, value.status);
 
     if (!updatedOrder) {
-      return errorResponse(res, "Order not found", null, 404);
+      return errorResponse(res, error, "Order not found", null, 404);
     }
 
     return successResponse(
@@ -111,7 +111,7 @@ export const deleteOrder = async (req, res) => {
     const id = req.params.id;
     const deletedOrder = await service.deleteOrder(id);
     if (!deletedOrder) {
-      return errorResponse(res, "Order not found", null, 404);
+      return errorResponse(res, error, "Order not found", null, 404);
     }
     return successResponse(res, "Order deleted successfully", null, 200);
   } catch (error) {
