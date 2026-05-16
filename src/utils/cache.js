@@ -32,4 +32,18 @@ export const cache = {
       console.error("Cache DEL error:", err);
     }
   },
+
+  async delPattern(pattern) {
+    if (!isRedisEnabled || !redis) return;
+
+    try {
+      const keys = await redis.keys(pattern);
+
+      if (keys.length > 0) {
+        await redis.del(keys);
+      }
+    } catch (err) {
+      console.error("Cache DEL PATTERN error:", err);
+    }
+  },
 };

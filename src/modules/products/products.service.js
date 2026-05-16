@@ -4,9 +4,9 @@ import { uploadFileToS3, deleteFileFromS3 } from "../../utils/s3.js";
 import logger from "../../config/logger.config.js";
 
 const invalidateProductsCache = async (id = null) => {
-  await cache.del("cache:admin:/api/products*");
-  await cache.del("cache:user:/api/products*");
-  logger.info(`Cache invalidated for products${id ? ` with ID ${id}` : ""}`);
+  await cache.delPattern("cache:admin:/api/products*");
+  await cache.delPattern("cache:user:/api/products*");
+  logger.info(`Cache invalidated for products*`);
 };
 
 export const createProduct = async (
