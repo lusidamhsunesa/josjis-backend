@@ -5,6 +5,7 @@ export const updateStatusPayment = async (orderId, status) => {
     where: { order_id: orderId, method: "midtrans" },
     data: {
       status: status,
+      paid_at: new Date(),
     },
   });
   return payment;

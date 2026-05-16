@@ -21,6 +21,7 @@ export const createProduct = async (req, res) => {
     );
     return successResponse(
       res,
+      error.details[0].message,
       "Product created successfully",
       dto.productDto(product),
       201,
@@ -84,7 +85,13 @@ export const updateProduct = async (req, res) => {
     const { error, value } = validation.updateProductSchema.validate(req.body);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(
+        res,
+        error.details[0].message,
+        "Failed to update product",
+        null,
+        422,
+      );
     }
 
     const { name, price, description, is_active, is_deleted } = value;
