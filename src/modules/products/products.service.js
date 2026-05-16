@@ -1,10 +1,12 @@
 import * as repository from "./products.repository.js";
 import { cache } from "../../utils/cache.js";
 import { uploadFileToS3, deleteFileFromS3 } from "../../utils/s3.js";
+import logger from "../../config/logger.config.js";
 
 const invalidateProductsCache = async (id = null) => {
   await cache.del("cache:admin:/api/products*");
   await cache.del("cache:user:/api/products*");
+  logger.info(`Cache invalidated for products${id ? ` with ID ${id}` : ""}`);
 };
 
 export const createProduct = async (
