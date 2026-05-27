@@ -2,6 +2,7 @@
   "info": {
     "_postman_id": "a8ea2da9-215b-4669-b243-8cef2283320f",
     "name": "API JosJis v1",
+    "description": "This collection covers the core API endpoints for an e-commerce backend running on `http://localhost:3000`. It is organized around three main functional areas:\n\n**Authentication**  \nHandles user identity management, including registering a new account (`Register`), signing in (`Login`), and signing out (`Log Out`).\n\n**Products**  \nProvides full CRUD operations for the product catalog: retrieving all products (`Product Get`), updating a product's details (`Update Product`), and removing a product (`Delete Product`).\n\n**Inventory**  \nManages stock-level data for products, supporting retrieval of a specific inventory record (`Inventory Get`), adding new inventory entries (`Create Inventory`), modifying existing ones (`Update Inventory`), and deleting records (`Delete Inventory`).\n\nUse this collection to develop, test, and validate the authentication flow and the product/inventory management features of the e-commerce API.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "46893771",
     "_collection_link": "https://go.postman.co/collection/46893771-a8ea2da9-215b-4669-b243-8cef2283320f?source=collection_link"
@@ -15,6 +16,35 @@
           "item": [
             {
               "name": "Login Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const res = pm.response.json();",
+                      "",
+                      "// cek status code",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// cek success true",
+                      "pm.test(\"Login success\", function () {",
+                      "    pm.expect(res.success).to.eql(true);",
+                      "});",
+                      "",
+                      "// cek token ada",
+                      "pm.test(\"Token exists\", function () {",
+                      "    pm.expect(res.data.token).to.not.be.undefined;",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "auth": {
                   "type": "noauth"
@@ -135,6 +165,49 @@
             },
             {
               "name": "Get Admin",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const res = pm.response.json();",
+                      "",
+                      "// cek status code",
+                      "pm.test(\"Status code 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// cek success true",
+                      "pm.test(\"Success is true\", function () {",
+                      "    pm.expect(res.success).to.eql(true);",
+                      "});",
+                      "",
+                      "// cek message",
+                      "pm.test(\"Message correct\", function () {",
+                      "    pm.expect(res.message).to.eql(\"Admin retrieved successfully\");",
+                      "});",
+                      "",
+                      "// cek data tidak kosong",
+                      "pm.test(\"Data exists\", function () {",
+                      "    pm.expect(res.data).to.not.be.null;",
+                      "});",
+                      "",
+                      "// cek role admin",
+                      "pm.test(\"Role is admin\", function () {",
+                      "    pm.expect(res.data.role).to.eql(\"admin\");",
+                      "});",
+                      "",
+                      "// cek user active",
+                      "pm.test(\"User is active\", function () {",
+                      "    pm.expect(res.data.is_active).to.eql(true);",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "auth": {
                   "type": "noauth"
@@ -235,6 +308,35 @@
             },
             {
               "name": "Get Admin Refresh Token",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const res = pm.response.json();",
+                      "",
+                      "// cek status code",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// cek success true",
+                      "pm.test(\"Get refresh-token success\", function () {",
+                      "    pm.expect(res.success).to.eql(true);",
+                      "});",
+                      "",
+                      "// cek token ada",
+                      "pm.test(\"Token exists\", function () {",
+                      "    pm.expect(res.data.token).to.not.be.undefined;",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "auth": {
                   "type": "noauth"
@@ -335,6 +437,31 @@
             },
             {
               "name": "Logout Admin Token",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const res = pm.response.json();",
+                      "",
+                      "// cek status code",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "// cek success true",
+                      "pm.test(\"Delete success\", function () {",
+                      "    pm.expect(res.success).to.eql(true);",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "auth": {
                   "type": "noauth"
@@ -442,6 +569,64 @@
       "item": [
         {
           "name": "Create Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Product created successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Product created successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek field penting",
+                  "pm.test(\"Product has name\", function () {",
+                  "    pm.expect(res.data.name).to.eql(\"nasi penyet\");",
+                  "});",
+                  "",
+                  "pm.test(\"Price exists\", function () {",
+                  "    pm.expect(res.data.price).to.eql(\"20000\");",
+                  "});",
+                  "",
+                  "pm.test(\"Category exists\", function () {",
+                  "    pm.expect(res.data.category).to.eql(\"makanan\");",
+                  "});",
+                  "",
+                  "// cek images array",
+                  "pm.test(\"Images uploaded\", function () {",
+                  "    pm.expect(res.data.img_urls).to.be.an(\"array\");",
+                  "    pm.expect(res.data.img_urls.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// simpan PRODUCT_ID",
+                  "pm.collectionVariables.set(\"PRODUCT_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"PRODUCT_ID =\", res.data.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -467,13 +652,15 @@
                   "key": "description",
                   "value": "nasi penyet murah meria",
                   "type": "text",
-                  "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66"
+                  "uuid": "c5764fd2-df49-4e0b-81e0-4739c2a0fb66",
+                  "disabled": true
                 },
                 {
                   "key": "category",
                   "value": "makanan",
                   "type": "text",
-                  "uuid": "810ac8e1-498b-4706-8604-77fc20ed249f"
+                  "uuid": "810ac8e1-498b-4706-8604-77fc20ed249f",
+                  "disabled": true
                 },
                 {
                   "key": "img",
@@ -482,7 +669,8 @@
                   "src": [
                     "postman-cloud:///1f13f180-6f68-4420-83e3-bdddc96f0f64",
                     "postman-cloud:///1f13f180-7032-4e50-a068-3b507505eaae"
-                  ]
+                  ],
+                  "disabled": true
                 }
               ]
             },
@@ -614,6 +802,89 @@
         },
         {
           "name": "Get All Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const response = pm.response.json();",
+                  "",
+                  "pm.test(\"Response success true\", function () {",
+                  "    pm.expect(response.success).to.eql(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Message valid\", function () {",
+                  "    pm.expect(response.message).to.eql(\"Products retrieved successfully\");",
+                  "});",
+                  "",
+                  "pm.test(\"Products is array\", function () {",
+                  "    pm.expect(response.data.products).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"Products total sesuai\", function () {",
+                  "    pm.expect(response.data.meta.total).to.eql(",
+                  "        response.data.products.length",
+                  "    );",
+                  "});",
+                  "",
+                  "pm.test(\"Meta pagination valid\", function () {",
+                  "    pm.expect(response.data.meta).to.have.property(\"page\");",
+                  "    pm.expect(response.data.meta).to.have.property(\"limit\");",
+                  "    pm.expect(response.data.meta).to.have.property(\"totalPages\");",
+                  "});",
+                  "",
+                  "response.data.products.forEach((product, index) => {",
+                  "",
+                  "    pm.test(`Product ${index + 1} has id`, function () {",
+                  "        pm.expect(product.id).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} has name`, function () {",
+                  "        pm.expect(product.name).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} has description`, function () {",
+                  "        pm.expect(product.description).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} has price`, function () {",
+                  "        pm.expect(product.price).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} img_urls array`, function () {",
+                  "        pm.expect(product.img_urls).to.be.an(\"array\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} is_active boolean`, function () {",
+                  "        pm.expect(product.is_active).to.be.a(\"boolean\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} is_deleted boolean`, function () {",
+                  "        pm.expect(product.is_deleted).to.be.a(\"boolean\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} created_at valid`, function () {",
+                  "        pm.expect(new Date(product.created_at).toString())",
+                  "            .to.not.eql(\"Invalid Date\");",
+                  "    });",
+                  "",
+                  "    pm.test(`Product ${index + 1} updated_at valid`, function () {",
+                  "        pm.expect(new Date(product.updated_at).toString())",
+                  "            .to.not.eql(\"Invalid Date\");",
+                  "    });",
+                  "",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -744,18 +1015,76 @@
         },
         {
           "name": "Get Product by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Product retrieved successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Product retrieved successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek field penting",
+                  "pm.test(\"Product has name\", function () {",
+                  "    pm.expect(res.data.name).to.eql(\"nasi penyet\");",
+                  "});",
+                  "",
+                  "pm.test(\"Price exists\", function () {",
+                  "    pm.expect(res.data.price).to.eql(\"20000\");",
+                  "});",
+                  "",
+                  "pm.test(\"Category exists\", function () {",
+                  "    pm.expect(res.data.category).to.eql(\"makanan\");",
+                  "});",
+                  "",
+                  "// cek images array",
+                  "pm.test(\"Images uploaded\", function () {",
+                  "    pm.expect(res.data.img_urls).to.be.an(\"array\");",
+                  "    pm.expect(res.data.img_urls.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// simpan PRODUCT_ID",
+                  "pm.collectionVariables.set(\"PRODUCT_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"PRODUCT_ID =\", res.data.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "raw": "{{URL}}/api/products/{{PRODUCT_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "products",
-                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                "{{PRODUCT_ID}}"
               ]
             }
           },
@@ -825,6 +1154,64 @@
         },
         {
           "name": "Update Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Product retrieved successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Product updated successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek field penting",
+                  "pm.test(\"Product has name\", function () {",
+                  "    pm.expect(res.data.name).to.eql(\"test update\");",
+                  "});",
+                  "",
+                  "pm.test(\"Price exists\", function () {",
+                  "    pm.expect(res.data.price).to.eql(\"10000\");",
+                  "});",
+                  "",
+                  "pm.test(\"Category exists\", function () {",
+                  "    pm.expect(res.data.category).to.eql(\"test\");",
+                  "});",
+                  "",
+                  "// cek images array",
+                  "pm.test(\"Images uploaded\", function () {",
+                  "    pm.expect(res.data.img_keys).to.be.an(\"array\");",
+                  "    pm.expect(res.data.img_keys.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// simpan PRODUCT_ID",
+                  "pm.collectionVariables.set(\"PRODUCT_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"PRODUCT_ID =\", res.data.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -857,18 +1244,24 @@
                   "type": "file",
                   "uuid": "473fbb38-9947-4ad6-9331-7138df8509f3",
                   "src": "/Users/frafgaabdullahrafertydza/Downloads/db-experrimental-ecommerce.png"
+                },
+                {
+                  "key": "category",
+                  "value": "test",
+                  "type": "text",
+                  "uuid": "6d72603f-2c43-4710-ae4a-59efb7cb0037"
                 }
               ]
             },
             "url": {
-              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "raw": "{{URL}}/api/products/{{PRODUCT_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "products",
-                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                "{{PRODUCT_ID}}"
               ]
             }
           },
@@ -976,18 +1369,76 @@
         },
         {
           "name": "Delete Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Product retrieved successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Product deleted successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek field penting",
+                  "pm.test(\"Product has name\", function () {",
+                  "    pm.expect(res.data.name).to.eql(\"test update\");",
+                  "});",
+                  "",
+                  "pm.test(\"Price exists\", function () {",
+                  "    pm.expect(res.data.price).to.eql(\"10000\");",
+                  "});",
+                  "",
+                  "pm.test(\"Category exists\", function () {",
+                  "    pm.expect(res.data.category).to.eql(\"test\");",
+                  "});",
+                  "",
+                  "// cek images array",
+                  "pm.test(\"Images uploaded\", function () {",
+                  "    pm.expect(res.data.img_keys).to.be.an(\"array\");",
+                  "    pm.expect(res.data.img_keys.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// simpan PRODUCT_ID",
+                  "pm.collectionVariables.set(\"PRODUCT_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"PRODUCT_ID =\", res.data.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/products/32dfba55-08c7-4b79-a8ee-fdd29ae34b40",
+              "raw": "{{URL}}/api/products/{{PRODUCT_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "products",
-                "32dfba55-08c7-4b79-a8ee-fdd29ae34b40"
+                "{{PRODUCT_ID}}"
               ]
             }
           },
@@ -1062,6 +1513,91 @@
       "item": [
         {
           "name": "Create Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Order created successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Order created successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek order id",
+                  "pm.test(\"Order has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "// cek table_id (boleh null)",
+                  "pm.test(\"Table ID valid (can be null)\", function () {",
+                  "    pm.expect(res.data).to.have.property(\"table_id\");",
+                  "});",
+                  "",
+                  "// cek status order",
+                  "pm.test(\"Status is pending\", function () {",
+                  "    pm.expect(res.data.status).to.eql(\"pending\");",
+                  "});",
+                  "",
+                  "// cek total amount",
+                  "pm.test(\"Total amount exists\", function () {",
+                  "    pm.expect(res.data.total_amount).to.eql(\"60000\");",
+                  "});",
+                  "",
+                  "// cek order_items array",
+                  "pm.test(\"Order items exist\", function () {",
+                  "    pm.expect(res.data.order_items).to.be.an(\"array\");",
+                  "    pm.expect(res.data.order_items.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// cek item pertama",
+                  "pm.test(\"Order item structure valid\", function () {",
+                  "    const item = res.data.order_items[0];",
+                  "",
+                  "    pm.expect(item).to.have.property(\"product_id\");",
+                  "    pm.expect(item).to.have.property(\"qty\");",
+                  "    pm.expect(item).to.have.property(\"price\");",
+                  "    pm.expect(item).to.have.property(\"subtotal\");",
+                  "});",
+                  "",
+                  "// optional: cek subtotal sesuai qty * price (string handling)",
+                  "pm.test(\"Subtotal correct calculation\", function () {",
+                  "    const item = res.data.order_items[0];",
+                  "    const expected = Number(item.qty) * Number(item.price);",
+                  "",
+                  "    pm.expect(Number(item.subtotal)).to.eql(expected);",
+                  "});",
+                  "",
+                  "// simpan ORDER_ID",
+                  "pm.collectionVariables.set(\"ORDER_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"ORDER_ID =\", res.data.id);",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -1070,7 +1606,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"tableId\" : \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n    \"items\" : [\n        {\n        \"productId\" : \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n        \"quantity\" : 2,\n        \"notes\" : \"catatan\"\n        }\n        // {\n        // \"productId\" : \"058d814d-7350-479e-aa1c-fbc43a055b74\",\n        // \"quantity\" : 1\n        // }\n    ]\n}",
+              "raw": "{\n    // \"tableId\" : \"0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff\",\n    \"items\" : [\n        {\n        \"productId\" : \"b4cf942a-6cc6-454b-b4bb-ca450a1c1b99\",\n        \"quantity\" : 2,\n        \"notes\" : \"catatan\"\n        },\n        {\n        \"productId\" : \"99cefad1-61f1-4eb1-a71e-1fca619b7f30\",\n        \"quantity\" : 1\n        }\n    ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1162,6 +1698,120 @@
         },
         {
           "name": "Get All Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status check",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// success flag",
+                  "pm.test(\"Response success is true\", function () {",
+                  "    pm.expect(res.success).to.be.true;",
+                  "});",
+                  "",
+                  "// data object check",
+                  "pm.test(\"Response has data object\", function () {",
+                  "    pm.expect(res).to.have.property(\"data\");",
+                  "});",
+                  "",
+                  "// orders array check",
+                  "pm.test(\"Orders exist and is array\", function () {",
+                  "    pm.expect(res.data.orders).to.be.an(\"array\");",
+                  "    pm.expect(res.data.orders.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// pagination meta check",
+                  "pm.test(\"Meta pagination exists\", function () {",
+                  "    pm.expect(res.data.meta).to.have.property(\"total\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"page\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"limit\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"totalPages\");",
+                  "});",
+                  "",
+                  "// order_items array check",
+                  "pm.test(\"Each order has order_items array\", function () {",
+                  "    res.data.orders.forEach(order => {",
+                  "        pm.expect(order.order_items).to.be.an(\"array\");",
+                  "    });",
+                  "});",
+                  "",
+                  "// product & image structure check",
+                  "pm.test(\"Products and img_keys exist\", function () {",
+                  "    res.data.orders.forEach(order => {",
+                  "        order.order_items.forEach(item => {",
+                  "",
+                  "            pm.expect(item.products).to.be.an(\"object\");",
+                  "            pm.expect(item.products).to.have.property(\"img_keys\");",
+                  "            pm.expect(item.products.img_keys).to.be.an(\"array\");",
+                  "",
+                  "        });",
+                  "    });",
+                  "});",
+                  "",
+                  "// ensure at least one image exists",
+                  "pm.test(\"Products have at least 1 image\", function () {",
+                  "    let totalImages = 0;",
+                  "",
+                  "    res.data.orders.forEach(order => {",
+                  "        order.order_items.forEach(item => {",
+                  "",
+                  "            if (Array.isArray(item.products.img_keys)) {",
+                  "                totalImages += item.products.img_keys.length;",
+                  "            }",
+                  "",
+                  "        });",
+                  "    });",
+                  "",
+                  "    pm.expect(totalImages).to.be.above(0);",
+                  "});",
+                  "",
+                  "// valid order status check",
+                  "pm.test(\"Order status is valid\", function () {",
+                  "    const validStatus = [\"pending\", \"cancelled\", \"completed\"];",
+                  "",
+                  "    res.data.orders.forEach(order => {",
+                  "        pm.expect(validStatus).to.include(order.status);",
+                  "    });",
+                  "});",
+                  "",
+                  "// product field validation per item",
+                  "pm.test(\"Product fields are valid\", function () {",
+                  "    res.data.orders.forEach((order, oIndex) => {",
+                  "        order.order_items.forEach((item, iIndex) => {",
+                  "",
+                  "            const product = item.products;",
+                  "",
+                  "            pm.expect(product.id, `order ${oIndex+1} item ${iIndex+1} id`).to.be.a(\"string\");",
+                  "            pm.expect(product.name, `order ${oIndex+1} item ${iIndex+1} name`).to.be.a(\"string\");",
+                  "            pm.expect(product.description, `order ${oIndex+1} item ${iIndex+1} description`).to.be.a(\"string\");",
+                  "            pm.expect(product.price, `order ${oIndex+1} item ${iIndex+1} price`).to.be.a(\"string\");",
+                  "",
+                  "            pm.expect(product.is_active, `order ${oIndex+1} item ${iIndex+1} is_active`).to.be.a(\"boolean\");",
+                  "            pm.expect(product.is_deleted, `order ${oIndex+1} item ${iIndex+1} is_deleted`).to.be.a(\"boolean\");",
+                  "",
+                  "            pm.expect(product.img_keys, `order ${oIndex+1} item ${iIndex+1} img_keys`).to.be.an(\"array\");",
+                  "",
+                  "            pm.expect(new Date(product.created_at).toString(), \"created_at valid date\")",
+                  "                .to.not.eql(\"Invalid Date\");",
+                  "",
+                  "            pm.expect(new Date(product.updated_at).toString(), \"updated_at valid date\")",
+                  "                .to.not.eql(\"Invalid Date\");",
+                  "        });",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -1303,18 +1953,103 @@
         },
         {
           "name": "Get Order by Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Order retrieved successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Order retrieved successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek order id",
+                  "pm.test(\"Order has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "// cek table_id (boleh null)",
+                  "pm.test(\"Table ID valid (can be null)\", function () {",
+                  "    pm.expect(res.data).to.have.property(\"table_id\");",
+                  "});",
+                  "",
+                  "// cek status order",
+                  "pm.test(\"Status is pending\", function () {",
+                  "    pm.expect(res.data.status).to.eql(\"pending\");",
+                  "});",
+                  "",
+                  "// cek total amount",
+                  "pm.test(\"Total amount exists\", function () {",
+                  "    pm.expect(res.data.total_amount).to.eql(\"60000\");",
+                  "});",
+                  "",
+                  "// cek order_items array",
+                  "pm.test(\"Order items exist\", function () {",
+                  "    pm.expect(res.data.order_items).to.be.an(\"array\");",
+                  "    pm.expect(res.data.order_items.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// cek item pertama",
+                  "pm.test(\"Order item structure valid\", function () {",
+                  "    const item = res.data.order_items[0];",
+                  "",
+                  "    pm.expect(item).to.have.property(\"product_id\");",
+                  "    pm.expect(item).to.have.property(\"qty\");",
+                  "    pm.expect(item).to.have.property(\"price\");",
+                  "    pm.expect(item).to.have.property(\"subtotal\");",
+                  "});",
+                  "",
+                  "// optional: cek subtotal sesuai qty * price (string handling)",
+                  "pm.test(\"Subtotal correct calculation\", function () {",
+                  "    const item = res.data.order_items[0];",
+                  "    const expected = Number(item.qty) * Number(item.price);",
+                  "",
+                  "    pm.expect(Number(item.subtotal)).to.eql(expected);",
+                  "});",
+                  "",
+                  "// simpan ORDER_ID",
+                  "pm.collectionVariables.set(\"ORDER_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"ORDER_ID =\", res.data.id);",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/orders/ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca",
+              "raw": "{{URL}}/api/orders/{{ORDER_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "orders",
-                "ff89d9bc-bdc6-44f7-bb6a-8eae4c18d1ca"
+                "{{ORDER_ID}}"
               ]
             }
           },
@@ -1467,6 +2202,67 @@
         },
         {
           "name": "Update Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Order status updated successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Order status updated successfully\");",
+                  "});",
+                  "",
+                  "// cek data ada",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// cek order id",
+                  "pm.test(\"Order has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "// cek table_id (boleh null)",
+                  "pm.test(\"Table ID valid (can be null)\", function () {",
+                  "    pm.expect(res.data).to.have.property(\"table_id\");",
+                  "});",
+                  "",
+                  "// cek status order",
+                  "pm.test(\"Status is pending\", function () {",
+                  "    pm.expect(res.data.status).to.eql(\"pending\");",
+                  "});",
+                  "",
+                  "// cek total amount",
+                  "pm.test(\"Total amount exists\", function () {",
+                  "    pm.expect(res.data.total_amount).to.eql(\"60000\");",
+                  "});",
+                  "",
+                  "// simpan ORDER_ID",
+                  "pm.collectionVariables.set(\"ORDER_ID\", res.data.id);",
+                  "",
+                  "// optional log",
+                  "console.log(\"ORDER_ID =\", res.data.id);",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -1475,7 +2271,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"status\" : \"cancelled\"\n}",
+              "raw": "{\n    \"status\" : \"pending\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1483,14 +2279,14 @@
               }
             },
             "url": {
-              "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "raw": "{{URL}}/api/orders/{{ORDER_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "orders",
-                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                "{{ORDER_ID}}"
               ]
             }
           },
@@ -1568,25 +2364,53 @@
           ]
         },
         {
-          "name": "Delete Product",
+          "name": "Delete Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// cek status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// cek success true",
+                  "pm.test(\"Order deleted successfully\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// cek message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Order deleted successfully\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/orders/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "raw": "{{URL}}/api/orders/{{ORDER_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "orders",
-                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                "{{ORDER_ID}}"
               ]
             }
           },
           "response": [
             {
-              "name": "Delete Product",
+              "name": "Delete Order",
               "originalRequest": {
                 "method": "DELETE",
                 "header": [],
@@ -1663,6 +2487,92 @@
       "item": [
         {
           "name": "Create Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Payment created successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// BRANCH: MIDTRANS",
+                  "if (req.method === \"midtrans\") {",
+                  "",
+                  "    pm.test(\"Midtrans response has token\", function () {",
+                  "        pm.expect(res.data.token).to.be.a(\"string\").and.not.empty;",
+                  "    });",
+                  "",
+                  "    pm.test(\"Midtrans has redirect_url\", function () {",
+                  "        pm.expect(res.data.redirect_url).to.include(\"midtrans\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Cash fields should NOT exist\", function () {",
+                  "        pm.expect(res.data).to.not.have.property(\"amount\");",
+                  "        pm.expect(res.data).to.not.have.property(\"status\");",
+                  "    });",
+                  "}",
+                  "",
+                  "// BRANCH: CASH",
+                  "if (req.method === \"cash\") {",
+                  "",
+                  "    pm.test(\"Cash response has id\", function () {",
+                  "        pm.expect(res.data.id).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Order ID exists\", function () {",
+                  "        pm.expect(res.data.order_id).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Method is cash\", function () {",
+                  "        pm.expect(res.data.method).to.eql(\"cash\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Status is unpaid\", function () {",
+                  "        pm.expect(res.data.status).to.eql(\"unpaid\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Amount exists\", function () {",
+                  "        pm.expect(res.data.amount).to.be.a(\"string\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"Midtrans token should be empty\", function () {",
+                  "        pm.expect(res.data.midtrans_token).to.eql(\"\");",
+                  "    });",
+                  "",
+                  "    pm.test(\"paid_at should be null\", function () {",
+                  "        pm.expect(res.data.paid_at).to.eql(null);",
+                  "    });",
+                  "}",
+                  "",
+                  "// optional log",
+                  "console.log(\"Payment method =\", req.method);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -1671,7 +2581,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"orderId\": \"494378da-b777-45d9-8ca4-6ff280e0bbb2\",\n    \"method\" : \"midtrans\"\n}",
+              "raw": "{\n    \"orderId\": \"f06592bf-036c-485a-8b04-699df62278d9\",\n    \"method\" : \"midtrans\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1832,11 +2742,84 @@
         },
         {
           "name": "Get All Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.expect(pm.response.code).to.eql(200);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Payments retrieved successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "// payments is array",
+                  "pm.test(\"Payments is array\", function () {",
+                  "    pm.expect(res.data.payments).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "// at least one payment",
+                  "pm.test(\"Payments not empty\", function () {",
+                  "    pm.expect(res.data.payments.length).to.be.above(0);",
+                  "});",
+                  "",
+                  "// VALIDATE EACH PAYMENT ITEM",
+                  "pm.test(\"Each payment has required fields\", function () {",
+                  "    res.data.payments.forEach((p) => {",
+                  "        pm.expect(p).to.have.property(\"id\");",
+                  "        pm.expect(p).to.have.property(\"order_id\");",
+                  "        pm.expect(p).to.have.property(\"method\");",
+                  "        pm.expect(p).to.have.property(\"amount\");",
+                  "        pm.expect(p).to.have.property(\"status\");",
+                  "        pm.expect(p).to.have.property(\"midtrans_token\");",
+                  "        pm.expect(p).to.have.property(\"paid_at\");",
+                  "        pm.expect(p).to.have.property(\"created_at\");",
+                  "    });",
+                  "});",
+                  "",
+                  "// OPTIONAL: CHECK META",
+                  "pm.test(\"Meta structure valid\", function () {",
+                  "    pm.expect(res.data.meta).to.have.property(\"total\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"page\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"limit\");",
+                  "    pm.expect(res.data.meta).to.have.property(\"totalPages\");",
+                  "});",
+                  "",
+                  "// limit must match array length (kalau tanpa filter)",
+                  "pm.test(\"Meta limit matches payments length\", function () {",
+                  "    pm.expect(res.data.meta.limit).to.eql(res.data.payments.length);",
+                  "});",
+                  "",
+                  "// optional log",
+                  "console.log(\"Total payments:\", res.data.meta.total);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/payments?method=cash",
+              "raw": "{{URL}}/api/payments",
               "host": [
                 "{{URL}}"
               ],
@@ -1873,7 +2856,8 @@
                 },
                 {
                   "key": "method",
-                  "value": "cash"
+                  "value": "cash",
+                  "disabled": true
                 }
               ]
             }
@@ -2059,6 +3043,72 @@
         },
         {
           "name": "Update Payment Cash",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Payment status updated successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Cash response has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Order ID exists\", function () {",
+                  "    pm.expect(res.data.order_id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Method is cash\", function () {",
+                  "    pm.expect(res.data.method).to.eql(\"cash\");",
+                  "});",
+                  "",
+                  "pm.test(`Status is ${req.status}`, function () {",
+                  "    pm.expect(res.data.status).to.eql(req.status);",
+                  "});",
+                  "",
+                  "pm.test(\"Amount exists\", function () {",
+                  "    pm.expect(res.data.amount).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Midtrans token should be empty\", function () {",
+                  "    pm.expect(res.data.midtrans_token).to.eql(\"\");",
+                  "});",
+                  "",
+                  "pm.test(\"paid_at should be null\", function () {",
+                  "    pm.expect(res.data.paid_at).to.eql(null);",
+                  "});",
+                  "",
+                  "// optional log",
+                  "console.log(\"Payment method =\", req.method);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -2075,14 +3125,14 @@
               }
             },
             "url": {
-              "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+              "raw": "{{URL}}/api/payments/{{PAYMENT_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "payments",
-                "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+                "{{PAYMENT_ID}}"
               ]
             }
           },
@@ -2161,18 +3211,46 @@
         },
         {
           "name": "Delete Payment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Payment deleted successfully\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/payments/2417b30d-4166-4002-9dcc-aa80b6fc83bb",
+              "raw": "{{URL}}/api/payments/{{PAYMENT_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "payments",
-                "2417b30d-4166-4002-9dcc-aa80b6fc83bb"
+                "{{PAYMENT_ID}}"
               ]
             }
           },
@@ -2247,6 +3325,57 @@
       "item": [
         {
           "name": "Create Table",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Table created successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Table response has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Name is ${req.name}`, function () {",
+                  "    pm.expect(res.data.name).to.eql(req.name);",
+                  "});",
+                  "",
+                  "pm.test(`Capacity is ${req.capacity}`, function () {",
+                  "    pm.expect(res.data.capacity).to.eql(req.capacity).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "// simpan TABLE_ID",
+                  "pm.collectionVariables.set(\"TABLE_ID\", res.data.id);",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -2355,6 +3484,63 @@
         },
         {
           "name": "Get All Table",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// source db",
+                  "pm.test(\"Source is db\", function () {",
+                  "    pm.expect(res.source).to.eql(\"db\");",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Tables retrieved successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "    pm.expect(res.data).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "// data not empty",
+                  "pm.test(\"Data not empty\", function () {",
+                  "    pm.expect(res.data.length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "// each table has valid structure",
+                  "pm.test(\"Each table has valid fields\", function () {",
+                  "    res.data.forEach((table) => {",
+                  "        pm.expect(table.id).to.be.a(\"string\");",
+                  "        pm.expect(table.name).to.be.a(\"string\");",
+                  "        pm.expect(table.capacity).to.be.a(\"number\");",
+                  "        pm.expect(table.is_active).to.be.a(\"boolean\");",
+                  "        pm.expect(table.is_deleted).to.be.a(\"boolean\");",
+                  "        pm.expect(table.created_at).to.be.a(\"string\");",
+                  "        pm.expect(table.updated_at).to.be.a(\"string\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -2434,6 +3620,53 @@
         },
         {
           "name": "Update Table",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Table updated successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Table response has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Name is ${req.name}`, function () {",
+                  "    pm.expect(res.data.name).to.eql(req.name);",
+                  "});",
+                  "",
+                  "pm.test(`Capacity is ${req.capacity}`, function () {",
+                  "    pm.expect(res.data.capacity).to.eql(req.capacity).to.be.a(\"number\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -2450,14 +3683,14 @@
               }
             },
             "url": {
-              "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+              "raw": "{{URL}}/api/tables/{{TABLE_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "tables",
-                "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+                "{{TABLE_ID}}"
               ]
             }
           },
@@ -2536,18 +3769,46 @@
         },
         {
           "name": "Delete Table",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Table deleted successfully\");",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/tables/0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff",
+              "raw": "{{URL}}/api/tables/{{TABLE_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "tables",
-                "0a0f9cf9-3880-457c-9ae8-c43f7b9b00ff"
+                "{{TABLE_ID}}"
               ]
             }
           },
@@ -2622,6 +3883,64 @@
       "item": [
         {
           "name": "Create Rating",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Rating created successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Rating response has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Order_id is ${req.orderId}`, function () {",
+                  "    pm.expect(res.data.order_id).to.eql(req.orderId).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Rating is ${req.rating}`, function () {",
+                  "    pm.expect(res.data.rating).to.eql(req.rating).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "pm.test(`Comment is ${req.comment}`, function () {",
+                  "    pm.expect(res.data.comment).to.eql(req.comment).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "// simpan RATING_ID",
+                  "pm.collectionVariables.set(\"RATING_ID\", res.data.id);",
+                  "",
+                  "// simpan ORDER_ID",
+                  "pm.collectionVariables.set(\"ORDER_ID\", res.data.order_id);",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -2722,6 +4041,65 @@
         },
         {
           "name": "Get All Rating",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.expect(pm.response.code).to.eql(200);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Ratings retrieved successfully\");",
+                  "});",
+                  "",
+                  "// ratings exists",
+                  "pm.test(\"Ratings exists\", function () {",
+                  "    pm.expect(res.data.ratings).to.exist;",
+                  "    pm.expect(res.data.ratings).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "// meta exists",
+                  "pm.test(\"Meta exists\", function () {",
+                  "    pm.expect(res.data.meta).to.exist;",
+                  "    pm.expect(res.data.meta.total).to.be.a(\"number\");",
+                  "    pm.expect(res.data.meta.page).to.be.a(\"number\");",
+                  "    pm.expect(res.data.meta.limit).to.be.a(\"number\");",
+                  "    pm.expect(res.data.meta.totalPages).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "// ratings not empty",
+                  "pm.test(\"Ratings not empty\", function () {",
+                  "    pm.expect(res.data.ratings.length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "// validate each rating",
+                  "pm.test(\"Each rating has valid fields\", function () {",
+                  "    res.data.ratings.forEach((rating) => {",
+                  "        pm.expect(rating.id).to.be.a(\"string\");",
+                  "        pm.expect(rating.order_id).to.be.a(\"string\");",
+                  "        pm.expect(rating.rating).to.be.a(\"number\");",
+                  "        pm.expect(rating.comment).to.be.a(\"string\");",
+                  "        pm.expect(rating.created_at).to.be.a(\"string\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -2837,11 +4215,78 @@
         },
         {
           "name": "Get Rating by Order Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200\", function () {",
+                  "    pm.expect(pm.response.code).to.eql(200);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message correct",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Ratings retrieved successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.exist;",
+                  "    pm.expect(res.data).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "// data not empty",
+                  "pm.test(\"Data not empty\", function () {",
+                  "    pm.expect(res.data.length).to.be.greaterThan(0);",
+                  "});",
+                  "",
+                  "// validate each rating item",
+                  "pm.test(\"Each rating has valid fields\", function () {",
+                  "    res.data.forEach((item) => {",
+                  "",
+                  "        // rating fields",
+                  "        pm.expect(item.id).to.be.a(\"string\");",
+                  "        pm.expect(item.order_id).to.be.a(\"string\");",
+                  "        pm.expect(item.rating).to.be.a(\"number\");",
+                  "        pm.expect(item.rating).to.be.within(1, 5);",
+                  "        pm.expect(item.comment).to.be.a(\"string\");",
+                  "        pm.expect(item.created_at).to.be.a(\"string\");",
+                  "",
+                  "        // orders object exists",
+                  "        pm.expect(item.orders).to.exist;",
+                  "        pm.expect(item.orders).to.be.an(\"object\");",
+                  "",
+                  "        // orders fields",
+                  "        pm.expect(item.orders.id).to.be.a(\"string\");",
+                  "        pm.expect(item.orders.table_id).to.be.a(\"string\");",
+                  "        pm.expect(item.orders.status).to.be.a(\"string\");",
+                  "        pm.expect(item.orders.total_amount).to.be.a(\"string\");",
+                  "        pm.expect(item.orders.is_active).to.be.a(\"boolean\");",
+                  "        pm.expect(item.orders.is_deleted).to.be.a(\"boolean\");",
+                  "        pm.expect(item.orders.created_at).to.be.a(\"string\");",
+                  "        pm.expect(item.orders.updated_at).to.be.a(\"string\");",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{URL}}/api/ratings/order/5dfc20b8-a53d-4464-a92b-4d9598cf7e1d",
+              "raw": "{{URL}}/api/ratings/order/{{ORDER_ID}}",
               "host": [
                 "{{URL}}"
               ],
@@ -2849,7 +4294,7 @@
                 "api",
                 "ratings",
                 "order",
-                "5dfc20b8-a53d-4464-a92b-4d9598cf7e1d"
+                "{{ORDER_ID}}"
               ]
             }
           },
@@ -2920,6 +4365,59 @@
         },
         {
           "name": "Update Rating",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const req = JSON.parse(pm.request.body.raw);",
+                  "const res = pm.response.json();",
+                  "",
+                  "// status code",
+                  "pm.test(\"Status code 200/201\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "// success true",
+                  "pm.test(\"Success true\", function () {",
+                  "    pm.expect(res.success).to.eql(true);",
+                  "});",
+                  "",
+                  "// message",
+                  "pm.test(\"Message correct\", function () {",
+                  "    pm.expect(res.message).to.eql(\"Rating updated successfully\");",
+                  "});",
+                  "",
+                  "// data exists",
+                  "pm.test(\"Data exists\", function () {",
+                  "    pm.expect(res.data).to.not.be.null;",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Rating response has id\", function () {",
+                  "    pm.expect(res.data.id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Order_id is ${res.data.order_id}`, function () {",
+                  "    pm.expect(res.data.order_id).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(`Rating is ${req.rating}`, function () {",
+                  "    pm.expect(res.data.rating).to.eql(req.rating).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "pm.test(`Comment is ${req.comment}`, function () {",
+                  "    pm.expect(res.data.comment).to.eql(req.comment).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "PUT",
             "header": [],
@@ -2933,14 +4431,14 @@
               }
             },
             "url": {
-              "raw": "{{URL}}/api/ratings/52f58b16-959c-4b5f-a0c0-a9f40bce67cd",
+              "raw": "{{URL}}/api/ratings/{{RATING_ID}}",
               "host": [
                 "{{URL}}"
               ],
               "path": [
                 "api",
                 "ratings",
-                "52f58b16-959c-4b5f-a0c0-a9f40bce67cd"
+                "{{RATING_ID}}"
               ]
             }
           },
@@ -3050,19 +4548,23 @@
       "value": ""
     },
     {
-      "key": "USER_ID",
+      "key": "PRODUCT_ID",
       "value": ""
     },
     {
-      "key": "COOKIES_ACCESS_TOKEN",
+      "key": "ORDER_ID",
       "value": ""
     },
     {
-      "key": "COOKIES_GUEST_ID",
+      "key": "PAYMENT_ID",
       "value": ""
     },
     {
-      "key": "COOKIES_REFRESH_TOKEN",
+      "key": "TABLE_ID",
+      "value": ""
+    },
+    {
+      "key": "RATING_ID",
       "value": ""
     }
   ]

@@ -23,6 +23,7 @@ CREATE TABLE "products" (
   "id" uuid PRIMARY KEY DEFAULT (gen_random_uuid()),
   "name" varchar NOT NULL,
   "description" text,
+  "category" varchar,
   "price" numeric(12,2) NOT NULL,
   "img_url" varchar,
   "is_active" bool DEFAULT true,
