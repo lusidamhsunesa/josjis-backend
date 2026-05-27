@@ -51,7 +51,7 @@ export const LoginAdmin = async (req, res) => {
     const { error, value } = validation.loginSchema.validate(req.body);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(res, error, "Failed to login admin", null, 422);
     }
 
     const { email, password } = req.body;

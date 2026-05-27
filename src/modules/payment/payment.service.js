@@ -1,7 +1,16 @@
 import * as repository from "./payment.repository.js";
 import { createMidtransTransaction } from "../../utils/midtrans.token.js";
+import logger from "../../config/logger.config.js";
+import { cache } from "../../utils/cache.js";
+
+const invalidatePaymentsCache = async (id = null) => {
+  await cache.delPattern("cache:admin:/api/payments*");
+  await cache.delPattern("cache:user:/api/payments*");
+  logger.info(`Cache invalidated for payments*`);
+};
 
 export const createPayment = async (orderId, data) => {
+  invalidatePaymentsCache();
   const { method } = data;
 
   if (!method) {
@@ -82,6 +91,7 @@ export const getPaymentByOrderId = async (orderId) => {
 };
 
 export const updatePaymentStatus = async (paymentId, status) => {
+  invalidatePaymentsCache();
   const updatedPayment = await repository.updatePaymentStatus(
     paymentId,
     status,
@@ -95,6 +105,7 @@ export const updatePaymentStatus = async (paymentId, status) => {
 };
 
 export const deletePayment = async (paymentId) => {
+  invalidatePaymentsCache();
   const deletedPayment = await repository.deletePayment(paymentId);
 
   if (!deletedPayment) {

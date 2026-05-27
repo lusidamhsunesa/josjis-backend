@@ -22,10 +22,10 @@ export const paginationSchema = Joi.object({
     "string.max": "Search query must be less than 100 characters long",
   }),
   sortBy: Joi.string()
-    .valid("name", "email", "created_at")
+    .valid("name", "price", "created_at")
     .default("created_at")
     .messages({
-      "any.only": "SortBy must be one of 'name', 'email', or 'created_at'",
+      "any.only": "SortBy must be one of 'name', 'price', or 'created_at'",
     }),
   order: Joi.string().valid("asc", "desc").default("desc").messages({
     "any.only": "Order must be either 'asc' or 'desc'",

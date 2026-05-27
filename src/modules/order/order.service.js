@@ -4,8 +4,8 @@ import { cache } from "../../utils/cache.js";
 import { getIO } from "../../config/socket.config.js";
 
 const invalidateOrdersCache = async (id = null) => {
-  await cache.del("cache:admin:/api/orders*");
-  await cache.del("cache:user:/api/orders*");
+  await cache.delPattern("cache:admin:/api/orders*");
+  await cache.delPattern("cache:user:/api/orders*");
 };
 
 export const createOrder = async (tableId, data) => {

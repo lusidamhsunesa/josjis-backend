@@ -2,8 +2,8 @@ import * as service from "./table.repository.js";
 import { cache } from "../../utils/cache.js";
 
 const invalidateTablesCache = async (id = null) => {
-  await cache.del("cache:admin:/api/tables*");
-  await cache.del("cache:user:/api/tables*");
+  await cache.delPattern("cache:admin:/api/tables*");
+  await cache.delPattern("cache:user:/api/tables*");
 };
 
 export const createTable = async (data) => {

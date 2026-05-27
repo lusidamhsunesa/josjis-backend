@@ -7,7 +7,7 @@ export const createOrder = async (req, res) => {
     const { error, value } = validation.createOrderSchema.validate(req.body);
 
     if (error) {
-      return errorResponse(res, error, error.details[0].message, null, 422);
+      return errorResponse(res, error, error, null, 422);
     }
 
     const tableId = value.tableId;

@@ -8,7 +8,13 @@ export const createProduct = async (req, res) => {
     const { error, value } = validation.createProductSchema.validate(req.body);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(
+        res,
+        error,
+        error?.details?.[0]?.message || "Failed to create product",
+        null,
+        422,
+      );
     }
     const { name, price, description, category } = value;
     const imgs = req.files;
@@ -21,7 +27,6 @@ export const createProduct = async (req, res) => {
     );
     return successResponse(
       res,
-      error.details[0].message,
       "Product created successfully",
       dto.productDto(product),
       201,
@@ -36,7 +41,13 @@ export const getProducts = async (req, res) => {
     const { error, value } = validation.paginationSchema.validate(req.query);
 
     if (error) {
-      return errorResponse(res, error.details[0].message, null, 422);
+      return errorResponse(
+        res,
+        error,
+        error?.details?.[0]?.message || "Failed to retrieve products",
+        null,
+        422,
+      );
     }
     const role = req.user?.role || "user";
     const { page, limit, search, sortBy, order } = value;
@@ -55,7 +66,7 @@ export const getProducts = async (req, res) => {
       200,
     );
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return errorResponse(res, error, "Failed to retrieve products", null, 500);
   }
 };
@@ -74,8 +85,14 @@ export const getProductById = async (req, res) => {
       200,
     );
   } catch (error) {
-    console.error(error);
-    return errorResponse(res, error, "Failed to retrieve product", null, 500);
+    // console.error(error);
+    return errorResponse(
+      res,
+      error,
+      error ?? "Failed to retrieve product",
+      null,
+      500,
+    );
   }
 };
 
@@ -87,14 +104,14 @@ export const updateProduct = async (req, res) => {
     if (error) {
       return errorResponse(
         res,
-        error.details[0].message,
-        "Failed to update product",
+        error,
+        error?.details?.[0]?.message || "Failed to update product",
         null,
         422,
       );
     }
 
-    const { name, price, description, is_active, is_deleted } = value;
+    const { name, price, description, category, is_active, is_deleted } = value;
     const imgs = req.files;
     // console.log("imgs in controller:", imgs);
     const updatedProduct = await service.updateProduct(
@@ -103,6 +120,7 @@ export const updateProduct = async (req, res) => {
         name,
         price,
         description,
+        category,
         is_active,
         is_deleted,
       },
@@ -118,7 +136,7 @@ export const updateProduct = async (req, res) => {
       200,
     );
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return errorResponse(res, error, "Failed to update product", null, 500);
   }
 };
@@ -137,7 +155,13 @@ export const deleteProduct = async (req, res) => {
       200,
     );
   } catch (error) {
-    console.error(error);
-    return errorResponse(res, error, "Failed to delete product", null, 500);
+    // console.error(error);
+    return errorResponse(
+      res,
+      error,
+      error ?? "Failed to delete product",
+      null,
+      500,
+    );
   }
 };
