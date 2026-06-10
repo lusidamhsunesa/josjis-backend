@@ -72,6 +72,12 @@ export const getOrders = async ({
           products: true,
         },
       },
+      tables: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
     },
     orderBy: {
       [sortBy]: order,
@@ -102,6 +108,19 @@ export const getOrderById = async (id) => {
       order_items: {
         include: {
           products: true,
+        },
+      },
+      payments: {
+        select: {
+          id: true,
+          method: true,
+          status: true,
+        },
+      },
+      tables: {
+        select: {
+          id: true,
+          name: true,
         },
       },
     },
