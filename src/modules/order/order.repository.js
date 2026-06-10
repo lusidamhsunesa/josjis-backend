@@ -3,6 +3,7 @@ import db from "../../config/db.config.js";
 export const createOrderWithItems = async (tx, data) => {
   return await tx.orders.create({
     data: {
+      customer_name: data.customer_name,
       table_id: data.table_id,
       status: data.status,
       total_amount: data.total_amount,

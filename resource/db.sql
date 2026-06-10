@@ -35,6 +35,7 @@ CREATE TABLE "products" (
 
 CREATE TABLE "orders" (
   "id" uuid PRIMARY KEY DEFAULT (gen_random_uuid()),
+  "customer_name" varchar(100),
   "table_id" uuid,
   "status" varchar,
   "total_amount" numeric(12,2),

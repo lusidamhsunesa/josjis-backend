@@ -11,7 +11,8 @@ export const createOrder = async (req, res) => {
     }
 
     const tableId = value.tableId;
-    const order = await service.createOrder(tableId, value);
+    const customerName = value.customerName;
+    const order = await service.createOrder(customerName, tableId, value);
 
     return successResponse(res, "Order created successfully", order, 201);
   } catch (error) {

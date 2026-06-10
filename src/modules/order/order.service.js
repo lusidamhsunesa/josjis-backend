@@ -8,7 +8,7 @@ const invalidateOrdersCache = async (id = null) => {
   await cache.delPattern("cache:user:/api/orders*");
 };
 
-export const createOrder = async (tableId, data) => {
+export const createOrder = async (customerName, tableId, data) => {
   invalidateOrdersCache();
   if (!data.items || data.items.length === 0) {
     throw new Error("Items is required");
@@ -53,6 +53,7 @@ export const createOrder = async (tableId, data) => {
 
     // 5. create order + nested items
     const order = await repository.createOrderWithItems(tx, {
+      customer_name: data.customerName,
       table_id: tableId,
       status: "pending",
       total_amount: totalAmount,

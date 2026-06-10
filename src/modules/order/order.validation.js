@@ -1,6 +1,12 @@
 import Joi from "joi";
 
 export const createOrderSchema = Joi.object({
+  customerName: Joi.string().max(100).required().messages({
+    "string.base": "Customer name must be a string",
+    "string.max": "Customer name must be less than 100 characters long",
+    "string.min": "Customer name must be at least 3 characters long",
+    "any.required": "Customer name is required",
+  }),
   tableId: Joi.string().uuid().messages({
     "string.base": "Table ID must be a string",
     "string.uuid": "Table ID must be a valid UUID",
