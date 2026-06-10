@@ -48,6 +48,18 @@ Whether you're building a small side project or a large-scale production applica
 
 ---
 
+# 🗄️ Database Scheme
+
+Below is the database structure used in this project:
+
+<div style="border: 2px solid #ddd; padding: 10px; border-radius: 8px;">
+
+![Database Schema](./resource/fnb-josjis-v1.png)
+
+</div>
+
+---
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -373,9 +385,9 @@ POST /api/auth/admin/login
 
 | Method                                                                 | Endpoint            | Protected | Role        |
 | ---------------------------------------------------------------------- | ------------------- | --------- | ----------- |
-| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/products`     | ✅        | admin, user |
-| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/products`     | ✅        | admin, user |
-| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/products/:id` | ✅        | admin       |
+| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/products`     | ✅        | admin       |
+| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/products`     | ❌        | admin, user |
+| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/products/:id` | ❌        | admin, user |
 | ![PUT](https://img.shields.io/badge/PUT-orange?style=for-the-badge)    | `/api/products/:id` | ✅        | admin       |
 | ![DELETE](https://img.shields.io/badge/DELETE-red?style=for-the-badge) | `/api/products`     | ✅        | admin       |
 
@@ -385,9 +397,9 @@ POST /api/auth/admin/login
 
 | Method                                                                 | Endpoint          | Protected | Role        |
 | ---------------------------------------------------------------------- | ----------------- | --------- | ----------- |
-| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/orders`     | ✅        | admin       |
+| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/orders`     | ❌        | user        |
 | ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/orders`     | ✅        | admin       |
-| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/orders`     | ✅        | admin, user |
+| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/orders/:id` | ❌        | admin, user |
 | ![PUT](https://img.shields.io/badge/PUT-orange?style=for-the-badge)    | `/api/orders/:id` | ✅        | admin       |
 | ![DELETE](https://img.shields.io/badge/DELETE-red?style=for-the-badge) | `/api/orders`     | ✅        | admin       |
 
@@ -397,7 +409,7 @@ POST /api/auth/admin/login
 
 | Method                                                                 | Endpoint            | Protected | Role  |
 | ---------------------------------------------------------------------- | ------------------- | --------- | ----- |
-| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/payments`     | ✅        | user  |
+| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/payments`     | ❌        | user  |
 | ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/payments`     | ✅        | admin |
 | ![PUT](https://img.shields.io/badge/PUT-orange?style=for-the-badge)    | `/api/payments/:id` | ✅        | admin |
 | ![DELETE](https://img.shields.io/badge/DELETE-red?style=for-the-badge) | `/api/payments`     | ✅        | admin |
@@ -408,7 +420,7 @@ POST /api/auth/admin/login
 
 | Method                                                                 | Endpoint                      | Protected | Role        |
 | ---------------------------------------------------------------------- | ----------------------------- | --------- | ----------- |
-| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/ratings`                | ✅        | user        |
+| ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/ratings`                | ❌        | user        |
 | ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/ratings`                | ✅        | admin       |
 | ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/ratings/order/:orderId` | ✅        | admin, user |
 | ![PUT](https://img.shields.io/badge/PUT-orange?style=for-the-badge)    | `/api/ratings/:id`            | ✅        | user        |
@@ -420,7 +432,7 @@ POST /api/auth/admin/login
 | Method                                                                 | Endpoint          | Protected | Role        |
 | ---------------------------------------------------------------------- | ----------------- | --------- | ----------- |
 | ![POST](https://img.shields.io/badge/POST-success?style=for-the-badge) | `/api/tables`     | ✅        | admin       |
-| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/tables`     | ✅        | admin, user |
+| ![GET](https://img.shields.io/badge/GET-blue?style=for-the-badge)      | `/api/tables`     | ❌        | admin, user |
 | ![PUT](https://img.shields.io/badge/PUT-orange?style=for-the-badge)    | `/api/tables/:id` | ✅        | admin       |
 | ![DELETE](https://img.shields.io/badge/DELETE-red?style=for-the-badge) | `/api/tables`     | ✅        | admin       |
 
@@ -431,7 +443,7 @@ POST /api/auth/admin/login
 **<AUTHOR>**
 
 - Website: [rafn.tech](https://rafn.tech)
-- GitHub: [@bluesky4047](https://github.com/blueksy4047)
+- GitHub: [@bluesky4047](https://github.com/bluesky4047)
 - Email: [developer@rafn.tech](mailto:developer@rafn.tech)
 
 ---
