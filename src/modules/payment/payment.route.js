@@ -11,8 +11,6 @@ const router = Router();
 
 router.post(
   "/",
-  authMiddleware,
-  authorizeRoles(["admin"]),
   controller.createPayment,
 );
 router.get(

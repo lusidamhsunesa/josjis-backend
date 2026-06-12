@@ -6,10 +6,11 @@ const loggerMiddleware = (req, res, next) => {
   res.on("finish", () => {
     logger.info({
       host: req.hostname,
+      ip: req.headers['cf-connecting-ip'],
       method: req.method,
       url: req.originalUrl,
       status: res.statusCode,
-      duration: `${Date.now() - start}ms`,
+      duration: Date.now() - start,
     });
   });
 
