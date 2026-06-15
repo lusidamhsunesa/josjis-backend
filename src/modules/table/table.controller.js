@@ -19,7 +19,7 @@ export const createTable = async (req, res) => {
 
 export const getAllTables = async (req, res) => {
   try {
-    const isAdmin = req.user.role === "admin";
+    const isAdmin = req.user?.role === "admin" ? true : false;
     const tables = await service.getAllTables(isAdmin);
     return successResponse(res, "Tables retrieved successfully", tables);
   } catch (error) {
